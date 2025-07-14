@@ -5,6 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TeamGreekGods</title>
+    
+    <!-- ==================== Social Media Meta Tags (for Sharing) ==================== -->
+    <meta name="description" content="Join Coach Abdeslam Laraki and unlock your potential with fitness programs designed for You.">
+    
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.url or url_for('home', _external=True) }}">
+    <meta property="og:title" content="TeamGreekGods: Transform Your Body">
+    <meta property="og:description" content="Join Coach Abdeslam Laraki and unlock your potential with fitness programs designed for You.">
+    <!-- Note: For best results, create a dedicated 1200x630px image for social sharing -->
+    <meta property="og:image" content="{{ url_for('static', filename='images/tgg-logo.png', _external=True) }}">
+    <meta property="og:site_name" content="TeamGreekGods">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ request.url or url_for('home', _external=True) }}">
+    <meta name="twitter:title" content="TeamGreekGods: Transform Your Body">
+    <meta name="twitter:description" content="Join Coach Abdeslam Laraki and unlock your potential with fitness programs designed for You.">
+    <!-- Note: For best results, create a dedicated 1200x630px image for social sharing -->
+    <meta name="twitter:image" content="{{ url_for('static', filename='images/tgg-logo.png', _external=True) }}">
+    <meta name="twitter:site" content="@LarakiAbs">
+    <!-- ============================================================================== -->
+    
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
