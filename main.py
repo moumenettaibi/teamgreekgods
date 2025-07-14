@@ -1,8 +1,14 @@
-
 # app.py
 from flask import Flask, render_template
+import datetime
 
 app = Flask(__name__)
+
+# --- This part is correct and should be kept ---
+# Tell browsers to cache static files (like CSS, JS, images) for 30 days.
+# This reduces load times for repeat visitors.
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = datetime.timedelta(days=30)
+
 
 @app.route('/')
 def home():
@@ -14,7 +20,6 @@ def coach():
     """Renders the coach's profile page."""
     return render_template('coach.html')
 
-# ADD THIS NEW ROUTE
 @app.route('/faq')
 def faq():
     """Renders the FAQ page."""
