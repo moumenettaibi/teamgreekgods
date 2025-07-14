@@ -1,0 +1,298 @@
+<!-- templates/coach.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Coach Abdeslam Laraki | Team Greek Gods</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='images/tgg-logo.png') }}" type="image/x-icon">
+
+</head>
+<body>
+
+   <!-- ==================== Header ==================== -->
+   <header>
+    <div class="container header-container">
+        <!-- The structure here is already correct -->
+        <div class="logo-container">
+            <a href="{{ url_for('home') }}" class="back-link" aria-label="Go back to homepage">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 12H5"></path>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+            </a>
+            <a href="{{ url_for('home') }}" class="logo">
+                <img src="{{ url_for('static', filename='images/tgg-logo.png') }}" alt="Team Greek Gods Logo" width="40" height="40">
+                <span>TEAMGREEKGODS</span>
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" class="{{ 'active' if current_page == 'home' else '' }}">Meet the Coach</a></li>
+                <li><a href="#certifications" class="{{ 'active' if current_page == 'home' else '' }}">Certifications</a></li>
+                <li><a href="#contact" class="{{ 'active' if current_page == 'home' else '' }}">Contact</a></li>
+            </ul>
+        </nav>
+        
+        <div class="header-actions">
+            <a href="#join-now" class="btn btn-dark">Join Now</a>
+            <button class="mobile-nav-toggle" aria-label="Toggle mobile menu">
+                <svg class="icon-open" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- ==================== Mobile Navigation ==================== -->
+<div class="mobile-nav">
+    <nav>
+        <ul>
+            <li><a href="#" class="{{ 'active' if current_page == 'home' else '' }}">Meet the Coach</a></li>
+            <li><a href="#certifications" class="{{ 'active' if current_page == 'home' else '' }}">Certifications</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#join-now">Join Now</a></li>
+        </ul>
+    </nav>
+</div>
+
+    <main>
+        <!-- ==================== Coach Hero Section ==================== -->
+        <section class="coach-hero">
+            <div class="container">
+                <h1>Meet Coach Abdeslam Laraki</h1>
+                <p class="subtitle subtitle-dark">The mind, motivator, and strategist behind Team Greek Gods. Discover the journey and philosophy that drives champion-level transformations.</p>
+            </div>
+        </section>
+
+        <!-- ==================== Detailed Coach Bio Section ==================== -->
+        <section class="about" style="padding-top: 100px; padding-bottom: 100px;">
+            <div class="container about-container coach-details">
+                <div class="about-image-wrapper">
+                    <img src="{{ url_for('static', filename='images/coach-image.png') }}" alt="Coach Abdeslam Laraki posing">
+                </div>
+                <div class="about-content" style="text-align: left;">
+                    <h2>My Philosophy</h2>
+                    <p class="subtitle-dark" style="margin: 0; max-width: 100%;">
+                        My approach is rooted in science, personalized attention, and unwavering support. I believe that true transformation isn't just about lifting weights or counting calories; it's about building a resilient mindset, understanding your body's unique needs, and creating sustainable habits. We don't do quick fixes or destructive diets here. We build foundations for a lifetime of strength, health, and confidence.
+                    </p>
+                    
+                    <h2>My Journey</h2>
+                    <p class="subtitle-dark" style="margin: 0; max-width: 100%;">
+                        A few years ago, I was lost in a sea of fitness misinformation. I tried every fad diet and generic workout plan, only to end up frustrated, with a damaged metabolism and no real results. That frustration became my fuel. I dedicated myself to learning the science of human anatomy, nutrition, and performance. I invested in top-tier certifications and mentored under industry leaders. Team Greek Gods was born from that struggle—a promise to provide others with the honest, effective, and scientific guidance I wish I'd had. My mission is to ensure no one else wastes their time, money, or health on the wrong path.
+                    </p>
+                </div>
+            </div>
+
+            
+        </section>
+
+        <!-- ==================== Press Logos Section ==================== -->
+        <section class="press-section">
+            <div class="container">
+                <h3 class="press-title">As Seen On</h3>
+                <div class="press-scroller" data-animated="true">
+                    <div class="scroller-wrapper">
+                        <div class="scroller-inner">
+                            {% for i in range(1, 8) %}
+                            <img src="{{ url_for('static', filename='images/press/press-' ~ i ~ '.png') }}" alt="Press Logo {{ i }}" class="press-logo">
+                            {% endfor %}
+                        </div>
+                        <div class="scroller-inner" aria-hidden="true">
+                            {% for i in range(1, 8) %}
+                            <img src="{{ url_for('static', filename='images/press/press-' ~ i ~ '.png') }}" alt="Press Logo {{ i }}" class="press-logo">
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- ADDED SECTION: Video Playlist -->
+        <section class="video-playlist">
+            <div class="container">
+                <h2 style="text-align: center; margin-bottom: 60px;">Who Is Abdeslam Laraki?</h2>
+                
+                <!-- Main Video Player -->
+                <div class="main-video-player">
+                    <iframe id="youtube-playlist-player" src="https://www.youtube.com/embed/MuEC7iZoh0A?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+
+                <!-- Scrollable Thumbnail List -->
+                <div class="video-thumbnail-list">
+                    <div class="playlist-item active" data-video-id="MuEC7iZoh0A">
+                        <img src="https://i.ytimg.com/vi/MuEC7iZoh0A/hqdefault.jpg" alt="Video Thumbnail">
+                        <span>The TGG Story</span>
+                    </div>
+                    <div class="playlist-item" data-video-id="ezXdKNMYod4">
+                        <img src="https://i.ytimg.com/vi/ezXdKNMYod4/hqdefault.jpg" alt="Video Thumbnail">
+                        <span>Client Success</span>
+                    </div>
+                    <div class="playlist-item" data-video-id="fs9_K0wbGUs">
+                        <img src="https://i.ytimg.com/vi/fs9_K0wbGUs/hqdefault.jpg" alt="Video Thumbnail">
+                        <span>Training Philosophy</span>
+                    </div>
+                    <div class="playlist-item" data-video-id="lMRlJagRQfM">
+                        <img src="https://i.ytimg.com/vi/lMRlJagRQfM/hqdefault.jpg" alt="Video Thumbnail">
+                        <span>A Day in the Life</span>
+                    </div>
+                    <div class="playlist-item" data-video-id="EvH8zlnTC1M">
+                        <img src="https://i.ytimg.com/vi/EvH8zlnTC1M/hqdefault.jpg" alt="Video Thumbnail">
+                        <span>Nutrition Tips</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== Certifications Section ==================== -->
+        <section id="certifications" class="certifications">
+            <div class="container">
+                <p class="section-tag-light-bg">Credentials</p>
+                <h2>Certifications</h2>
+                <p class="subtitle subtitle-dark">Committed to excellence through continuous education and professional development.</p>
+                <div class="certifications-grid">
+                    <div class="cert-item">
+                        <div class="icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="8" r="7"></circle>
+                                <polyline points="8.21 13.89 7 23 12 17 17 23 15.79 13.88"></polyline>
+                            </svg>
+                        </div>
+                        <h4>ISSA (International Sports Sciences Association)</h4>
+                    </div>
+                    <div class="cert-item">
+                        <div class="icon-wrapper">
+                            <svg xmlns="http="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="8" r="7"></circle>
+                                <polyline points="8.21 13.89 7 23 12 17 17 23 15.79 13.88"></polyline>
+                            </svg>
+                        </div>
+                        <h4>NASM (National Academy of Sports Medicine)</h4>
+                    </div>
+                    <div class="cert-item">
+                        <div class="icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="8" r="7"></circle>
+                                <polyline points="8.21 13.89 7 23 12 17 17 23 15.79 13.88"></polyline>
+                            </svg>
+                        </div>
+                        <h4>Fédération Royale Marocaine de Bodybuilding et Fitness</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== Final CTA Section (Reused) ==================== -->
+        <section class="cta">
+            <div class="container">
+                <h2>Ready to Train With The Best?</h2>
+                <p class="subtitle">Join the elite community of fitness champions and start your transformation today.</p>
+                <a href="#" class="btn btn-cta">Start Your Journey</a>
+            </div>
+        </section>
+    </main>
+
+     <!-- ==================== Footer ==================== -->
+    <footer id="contact">
+        <div class="container footer-container">
+            <div class="footer-about">
+                <a href="{{ url_for('home') }}" class="logo footer-logo">
+                    <img src="{{ url_for('static', filename='images/tgg-logo.png') }}" alt="Team Greek Gods Logo" width="40" height="40">
+                    <span style="color: white;">TEAMGREEKGODS</span>
+                </a>
+                <p>Follow Us On Social Media</p>
+                <div class="socials">
+                    <a href="https://www.instagram.com/teamgreekgods/" aria-label="Instagram">
+                      <svg style="color: white;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                      </svg>
+                    </a>
+                  
+                    <a href="https://www.facebook.com/profile.php?id=100083533650189" aria-label="Facebook">
+                      <svg style="color: white;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                      </svg>
+                    </a>
+                  
+                    <a href="https://x.com/LarakiAbs" aria-label="Twitter">
+                        <svg style="color: white;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                          <path d="M9.5,6.8l5.8-6.2h-1.4l-5,5.4l-4-5.4H0l6.2,8.2L0,15.5h1.4l5.4-5.9l4.4,5.9H16L9.5,6.8z M2.1,1.6h2.2l9.7,12.9h-2.2L2.1,1.6z"/>
+                        </svg>
+                      </a>
+                      
+                  
+                    <a href="https://www.youtube.com/@AbdeslamLaraki" aria-label="YouTube">
+                      <svg style="color: white;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22.54 6.42a1.64 1.64 0 0 0-1.16-1.16C19.95 4.5 12 4.5 12 4.5s-7.95 0-9.38.76a1.64 1.64 0 0 0-1.16 1.16C.7 7.85 0 12 0 12s.7 4.15 1.46 5.58a1.64 1.64 0 0 0 1.16 1.16c1.43.76 9.38.76 9.38.76s7.95 0 9.38-.76a1.64 1.64 0 0 0 1.16-1.16c.76-1.43 1.46-5.58 1.46-5.58s-.7-4.15-1.46-5.58z"></path>
+                        <polygon points="9.5 15.5 15.5 12 9.5 8.5 9.5 15.5"></polygon>
+                      </svg>
+                    </a>
+                  </div>
+                  
+            </div>
+            <div class="footer-links-wrapper">
+                <div class="footer-links"><h4>Company</h4><ul><li><a href="#">About Us</a></li><li><a href="{{ url_for('coach') }}">Coach</a></li><li><a href="#">Success Stories</a></li><li><a href="#">Contact</a></li></ul></div>
+                <div class="footer-links"><h4>Contact</h4><ul><li><a href="mailto:contact@teamgreekgods.ma"><svg style="color: white;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> contact@teamgreekgods.ma</a></li><li>
+                    <a href="https://wa.me/212705185468">
+                        <svg style="color: white;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+                          <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+                        </svg> +212 705-185468</a>            
+                </li><li><span><svg style="color: white;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> Morocco</span></li></ul></div>
+            </div>
+        </div>
+        <div class="footer-bottom"><p>© 2025 <span style="color: white;" >TeamGreekGods</span>. All rights reserved.</p></div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile navigation toggle
+            const navToggle = document.querySelector('.mobile-nav-toggle');
+            const mobileNav = document.querySelector('.mobile-nav');
+            const body = document.querySelector('body');
+
+            navToggle.addEventListener('click', function() {
+                navToggle.classList.toggle('active');
+                mobileNav.classList.toggle('open');
+                body.classList.toggle('mobile-nav-open');
+            });
+            
+            const mobileLinks = document.querySelectorAll('.mobile-nav a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navToggle.classList.remove('active');
+                    mobileNav.classList.remove('open');
+                    body.classList.remove('mobile-nav-open');
+                });
+            });
+
+            // ADDED SCRIPT: Interactive Video Playlist
+            const playlistItems = document.querySelectorAll('.playlist-item');
+            const playerIframe = document.getElementById('youtube-playlist-player');
+            
+            playlistItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Get video ID from the clicked item
+                    const videoId = this.dataset.videoId;
+                    
+                    // Update the iframe src to the new video and autoplay
+                    playerIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+                    
+                    // Update the 'active' class
+                    document.querySelector('.playlist-item.active').classList.remove('active');
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,299 @@
+
+<!-- templates/faq.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - TeamGreekGods</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='images/tgg-logo.png') }}" type="image/x-icon">
+</head>
+<body>
+
+    <!-- ==================== Header ==================== -->
+    <header>
+        <div class="container header-container">
+            <div class="logo-container">
+                <a href="{{ url_for('home') }}" class="back-link" aria-label="Go back to homepage">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 12H5"></path>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </a>
+                <a href="{{ url_for('home') }}" class="logo">
+                    <img src="{{ url_for('static', filename='images/tgg-logo.png') }}" alt="Team Greek Gods Logo" width="40" height="40">
+                    <span>TEAMGREEKGODS</span>
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Faq</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="" class="btn btn-dark">Join Now</a>
+                <button class="mobile-nav-toggle" aria-label="Toggle mobile menu">
+                    <svg class="icon-open" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                    <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== Mobile Navigation ==================== -->
+    <div class="mobile-nav">
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('faq') }}">Faq</a></li>
+                <li><a href="">Join Now</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main>
+        <!-- ==================== FAQ Page Section ==================== -->
+        <section class="faq-page">
+            <div class="container">
+                <div class="faq-header">
+                    <h1>FAQ</h1>
+                    <p class="subtitle subtitle-dark">
+                        Find answers to your questions below. If you can't find what you're looking for, feel free to contact us.
+                    </p>
+                </div>
+
+                <div class="faq-list">
+                    <!-- FAQ Item 1 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span class="faq-number">01</span>
+                            <h4>What is the Team Greek Gods program?</h4>
+                            <div class="faq-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>It’s a personalized program that combines training plans, nutrition, and motivation tailored to your specific needs—whether you want to lose weight, gain muscle, or simply improve your fitness. You benefit from continuous support via the TGG FIT app.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ Item 2 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span class="faq-number">02</span>
+                            <h4>Is the program suitable for beginners?</h4>
+                            <div class="faq-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Absolutely. The program is designed for both beginners and experienced athletes. Every plan is created based on your current level and your goals.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ Item 3 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span class="faq-number">03</span>
+                            <h4>What results can I expect?</h4>
+                            <div class="faq-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Results depend on your commitment, but you can expect a significant physical and mental transformation in 3 months—including fat loss, muscle gain, better health, and increased self-confidence.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ Item 4 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span class="faq-number">04</span>
+                            <h4>How is it different from other programs?</h4>
+                            <div class="faq-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <p><b>24/7 Support:</b> You’re continuously guided by a coach.<br><b>Personalization:</b> Every program is tailored to your needs.<br><b>Proven Results:</b> Over 9,000 successful transformations since 2018.<br><b>Exclusive App:</b> The TGG FIT app offers advanced tracking and tools.<br><b>Scientific Approach:</b> Methods validated by nutrition and sports experts.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ Item 5 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span class="faq-number">05</span>
+                            <h4>How does the coaching work?</h4>
+                            <div class="faq-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>You’ll be in direct contact with your coach for regular adjustments and daily progress tracking. All your questions are answered quickly via WhatsApp.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ Item 6 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span class="faq-number">06</span>
+                            <h4>Do I have to join a gym?</h4>
+                            <div class="faq-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>No, it’s not mandatory. There are programs adapted for training at home, outdoors, or in a gym—based on your preferences.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ Item 7 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span class="faq-number">07</span>
+                            <h4>What equipment do I need to start?</h4>
+                            <div class="faq-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>It depends on your program. You can work with basic equipment (dumbbells, resistance bands) or even no equipment at all. If you have gym access, your sessions will be optimized accordingly.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ Item 8 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span class="faq-number">08</span>
+                            <h4>What kind of meals are in the nutrition plan?</h4>
+                            <div class="faq-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>The plan is based on simple meals tailored to your cultural and dietary preferences. There are also options for specific diets.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ Item 9 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span class="faq-number">09</span>
+                            <h4>What if I have dietary restrictions or health issues?</h4>
+                            <div class="faq-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>All plans take your restrictions or medical conditions into account. The team works with experts to offer a safe and effective solution for you.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== Final CTA Section ==================== -->
+        <section class="cta" id="join-now">
+            <div class="container">
+                <h2>Ready to Become a Greek God?</h2>
+                <p class="subtitle">Join the elite community of fitness champions and start your transformation today.</p>
+                <a href="{{ url_for('home') }}#join-now" class="btn btn-cta">Start Your Journey Now</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==================== Footer ==================== -->
+    <footer id="contact">
+        <div class="container footer-container">
+            <div class="footer-about">
+                <a href="{{ url_for('home') }}" class="logo footer-logo">
+                    <img src="{{ url_for('static', filename='images/tgg-logo.png') }}" alt="Team Greek Gods Logo" width="40" height="40">
+                    <span style="color: white;">TEAMGREEKGODS</span>
+                </a>
+                <p>Follow Us On Social Media</p>
+                <div class="socials">
+                    <a href="https://www.instagram.com/teamgreekgods/" aria-label="Instagram">
+                      <svg style="color: white;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                      </svg>
+                    </a>
+                  
+                    <a href="https://www.facebook.com/profile.php?id=100083533650189" aria-label="Facebook">
+                      <svg style="color: white;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                      </svg>
+                    </a>
+                  
+                    <a href="https://x.com/LarakiAbs" aria-label="Twitter">
+                        <svg style="color: white;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                          <path d="M9.5,6.8l5.8-6.2h-1.4l-5,5.4l-4-5.4H0l6.2,8.2L0,15.5h1.4l5.4-5.9l4.4,5.9H16L9.5,6.8z M2.1,1.6h2.2l9.7,12.9h-2.2L2.1,1.6z"/>
+                        </svg>
+                      </a>
+                      
+                  
+                    <a href="https://www.youtube.com/@AbdeslamLaraki" aria-label="YouTube">
+                      <svg style="color: white;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22.54 6.42a1.64 1.64 0 0 0-1.16-1.16C19.95 4.5 12 4.5 12 4.5s-7.95 0-9.38.76a1.64 1.64 0 0 0-1.16 1.16C.7 7.85 0 12 0 12s.7 4.15 1.46 5.58a1.64 1.64 0 0 0 1.16 1.16c1.43.76 9.38.76 9.38.76s7.95 0 9.38-.76a1.64 1.64 0 0 0 1.16-1.16c.76-1.43 1.46-5.58 1.46-5.58s-.7-4.15-1.46-5.58z"></path>
+                        <polygon points="9.5 15.5 15.5 12 9.5 8.5 9.5 15.5"></polygon>
+                      </svg>
+                    </a>
+                  </div>
+                  
+            </div>
+            <div class="footer-links-wrapper">
+                <div class="footer-links"><h4>Company</h4><ul><li><a href="#">About Us</a></li><li><a href="{{ url_for('coach') }}">Coach</a></li><li><a href="#">Success Stories</a></li><li><a href="#">Contact</a></li></ul></div>
+                <div class="footer-links"><h4>Contact</h4><ul><li><a href="mailto:contact@teamgreekgods.ma"><svg style="color: white;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> contact@teamgreekgods.ma</a></li><li>
+                    <a href="https://wa.me/212705185468">
+                        <svg style="color: white;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+                          <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+                        </svg> +212 705-185468</a>            
+                </li><li><span><svg style="color: white;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> Morocco</span></li></ul></div>
+            </div>
+        </div>
+        <div class="footer-bottom"><p>© 2025 <span style="color: white;" >TeamGreekGods</span>. All rights reserved.</p></div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const body = document.querySelector('body');
+
+            // --- Mobile Nav Logic ---
+            const navToggle = document.querySelector('.mobile-nav-toggle');
+            const mobileNav = document.querySelector('.mobile-nav');
+            if (navToggle) {
+                navToggle.addEventListener('click', () => {
+                    navToggle.classList.toggle('active');
+                    mobileNav.classList.toggle('open');
+                    body.classList.toggle('mobile-nav-open');
+                });
+            }
+            document.querySelectorAll('.mobile-nav a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navToggle && mobileNav) {
+                        navToggle.classList.remove('active');
+                        mobileNav.classList.remove('open');
+                        body.classList.remove('mobile-nav-open');
+                    }
+                });
+            });
+
+            // --- FAQ Accordion Logic ---
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    faqItems.forEach(otherItem => {
+                        if (otherItem.classList.contains('active')) {
+                           otherItem.classList.remove('active');
+                        }
+                    });
+
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
