@@ -348,7 +348,8 @@ header nav a:hover::after {
     color: var(--text-light);
     text-align: center;
     padding: 120px 0;
-    min-height: calc(90vh - 85px);
+    /* EDIT THIS LINE: Change 100vh to a smaller value like 92vh or 90vh */
+    min-height: 94vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -364,6 +365,7 @@ header nav a:hover::after {
 
 /* --- Premium Scroll Down Icon --- */
 .scroll-down-icon {
+    /* KEY CHANGE: Position relative to the nearest positioned ancestor (.hero) */
     position: absolute;
     bottom: 30px;
     left: 50%;
@@ -380,29 +382,29 @@ header nav a:hover::after {
 .scroll-down-icon .mouse {
     width: 26px;
     height: 44px;
-    /* Black by default for desktop (appears on white BG on tall screens) */
-    border: 2px solid rgba(0, 0, 0, 0.7);
+    /* KEY CHANGE: Color is always white */
+    border: 2px solid rgba(255, 255, 255, 0.7);
     border-radius: 60px;
     position: relative;
     transition: border-color 0.4s ease, width 0.3s ease, height 0.3s ease;
 }
 
 .scroll-down-icon:hover .mouse {
-    border-color: #000000;
+    border-color: #FFFFFF;
 }
 
 .scroll-down-icon .wheel {
     position: absolute;
     top: 8px;
     left: 50%;
-    /* Black by default for desktop */
-    background-color: #000000;
+    /* KEY CHANGE: Color is always white */
+    background-color: #FFFFFF;
     width: 3px;
     height: 7px;
     border-radius: 2px;
     opacity: 1;
     animation: scroll-wheel-animation 2.2s ease-in-out infinite;
-    transition: top 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+    transition: top 0.3s ease, height 0.3s ease;
 }
 
 /* --- Keyframes for a smoother, fading scroll animation --- */
@@ -1376,7 +1378,6 @@ footer {
         aspect-ratio: 1.6 / 1;
         padding: 1.5rem;
     }
-    /* Increase font sizes for better readability on mobile */
     .cert-script-title {
         font-size: 1.3rem; 
     }
@@ -1389,23 +1390,17 @@ footer {
 
     /* --- RESPONSIVE SCROLL-DOWN ICON --- */
     .scroll-down-icon {
-        bottom: 20px; /* Adjust vertical position for smaller screens */
+        bottom: 25px; /* Adjust vertical position for smaller screens */
     }
 
     .scroll-down-icon .mouse {
         width: 22px;  /* Make the mouse icon smaller */
         height: 36px;  /* Adjust height proportionally */
-        border-color: rgba(255, 255, 255, 0.7); /* White for mobile (on dark hero) */
-    }
-    
-    .scroll-down-icon:hover .mouse {
-        border-color: #FFFFFF; /* Solid white on hover for mobile */
     }
 
     .scroll-down-icon .wheel {
-        top: 7px;     /* Adjust the wheel's position */
+        top: 7px;     /* Adjust the wheel's position inside the smaller mouse */
         height: 6px;  /* Make the wheel smaller */
-        background-color: #FFFFFF; /* White for mobile */
     }
 }
 
