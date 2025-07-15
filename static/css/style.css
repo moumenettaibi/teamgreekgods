@@ -1390,7 +1390,7 @@ footer {
 
     /* --- RESPONSIVE SCROLL-DOWN ICON --- */
     .scroll-down-icon {
-        bottom: 25px; /* Adjust vertical position for smaller screens */
+        bottom: 10px; /* Adjust vertical position for smaller screens */
     }
 
     .scroll-down-icon .mouse {
