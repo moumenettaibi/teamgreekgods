@@ -1,13 +1,22 @@
 # app.py
 from flask import Flask, render_template
 import datetime
+import time # <--- 1. ADD THIS LINE
 
 app = Flask(__name__)
 
 # --- This part is correct and should be kept ---
-# Tell browsers to cache static files (like CSS, JS, images) for 30 days.
-# This reduces load times for repeat visitors.
-app.config['SEND_FILE_MAX_AGE_DEFAULT'] = datetime.timedelta(days=30)
+# Only set the long cache time when NOT in debug mode (i.e., for production)
+# 2. CHANGE THIS BLOCK
+if not app.debug:
+    app.config['SEND_FILE_MAX_AGE_DEFAULT'] = datetime.timedelta(days=30)
+
+# 3. ADD THIS NEW FUNCTION
+# This function creates a 'cache_buster' variable with the current time
+# and makes it available to all templates.
+@app.context_processor
+def inject_cache_buster():
+    return dict(cache_buster=int(time.time()))
 
 
 @app.route('/')
