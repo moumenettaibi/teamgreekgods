@@ -3,7 +3,7 @@
 /* ADDED: Fonts for the new Diploma Style Cards */
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;700&family=Pinyon+Script&family=Cinzel+Decorative:wght@400;700&display=swap');
 
-/* Root variables remain unchanged */
+/* Root variables */
 :root {
     --bg-dark: #000000;
     --bg-light: #FFFFFF;
@@ -348,7 +348,6 @@ header nav a:hover::after {
     color: var(--text-light);
     text-align: center;
     padding: 120px 0;
-    /* EDIT THIS LINE: Change 100vh to a smaller value like 92vh or 90vh */
     min-height: 94vh;
     display: flex;
     flex-direction: column;
@@ -365,7 +364,6 @@ header nav a:hover::after {
 
 /* --- Premium Scroll Down Icon --- */
 .scroll-down-icon {
-    /* KEY CHANGE: Position relative to the nearest positioned ancestor (.hero) */
     position: absolute;
     bottom: 30px;
     left: 50%;
@@ -382,7 +380,6 @@ header nav a:hover::after {
 .scroll-down-icon .mouse {
     width: 26px;
     height: 44px;
-    /* KEY CHANGE: Color is always white */
     border: 2px solid rgba(255, 255, 255, 0.7);
     border-radius: 60px;
     position: relative;
@@ -397,7 +394,6 @@ header nav a:hover::after {
     position: absolute;
     top: 8px;
     left: 50%;
-    /* KEY CHANGE: Color is always white */
     background-color: #FFFFFF;
     width: 3px;
     height: 7px;
@@ -670,38 +666,6 @@ header nav a:hover::after {
     background-color: #1a1a1a;
     box-shadow: 0 0 0 8px #111, var(--shadow-lg);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* --- Responsive styles for Tablet and Mobile --- */
-@media (max-width: 992px) {
-    .app-promo-container {
-        grid-template-columns: 1fr; /* Switch to a single column */
-        gap: 60px;                  /* Use a single gap for rows */
-        text-align: center;
-    }
-    
-    /* Reset grid placement so children stack in HTML order */
-    .app-promo-content,
-    .app-promo-video-container,
-    .app-buttons {
-        grid-column: 1;
-        grid-row: auto;
-        align-self: auto;
-    }
-
-    /* On mobile, center the buttons container */
-    .app-promo .app-buttons {
-        justify-content: center;
-    }
-}
-
-@media (max-width: 768px) {
-    /* For smaller phones, stack the buttons vertically and center them */
-    .app-promo .app-buttons {
-        flex-direction: column;
-        align-items: center; /* This overrides 'stretch' for a cleaner look */
-        gap: 20px;           /* Increase gap for vertical layout */
-    }
 }
 
 /* --- FAQ Section (Homepage) --- */
@@ -996,9 +960,6 @@ footer {
     z-index: 2;
 }
 
-
-/* --- TYPOGRAPHY FOR PERFECT CENTERING --- */
-
 .cert-script-title {
     font-family: 'Cinzel Decorative', serif;
     font-size: 1.1rem;
@@ -1035,7 +996,6 @@ footer {
     color: #1a2b45;
     font-weight: 700;
 }
-
 
 /* --- Decorative Corners (Unchanged) --- */
 .cert-item::before,
@@ -1287,6 +1247,38 @@ footer {
     transform: translate(50%, -50%) scale(1);
 }
 
+/* --- Header Logo & Back Arrow Alignment --- */
+.logo-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.back-link {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%) translateX(calc(-100% - 16px));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dark);
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.back-link:hover {
+    background-color: var(--bg-secondary-light);
+}
+
+.back-link svg {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    stroke-width: 2.5;
+}
+
 /* --- Responsive Design --- */
 @media (max-width: 1200px) {
     /* Responsive Certifications Layout: 2 Columns on Tablet */
@@ -1321,7 +1313,24 @@ footer {
     .press-section {
         padding: 60px 0;
     }
-    .app-promo-video-container { margin-top: 40px; }
+    
+    /* Responsive App Promo Section */
+    .app-promo-container {
+        grid-template-columns: 1fr;
+        gap: 60px;
+        text-align: center;
+    }
+    .app-promo-content,
+    .app-promo-video-container,
+    .app-buttons {
+        grid-column: 1;
+        grid-row: auto;
+        align-self: auto;
+    }
+    .app-promo .app-buttons {
+        justify-content: center;
+    }
+    
     .testimonials-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 24px;
@@ -1361,19 +1370,22 @@ footer {
         justify-content: space-between;
     }
 
-    .hero-buttons, .app-buttons {
+    .hero-buttons {
         flex-direction: column;
         align-items: stretch;
     }
+    
+    .app-promo .app-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
     .stats {
         flex-direction: row;
         gap: 30px;
         justify-content: center;
         flex-wrap: wrap;
-    }
-    .testimonials-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
     }
     .transformation-image {
         height: 350px;
@@ -1417,6 +1429,30 @@ footer {
         width: 35px;
         height: 35px;
     }
+
+    /* === MODIFICATION: Mobile Testimonials Scroller (No Icons) === */
+    .testimonials-grid {
+        display: flex;
+        gap: 24px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        margin: 80px -24px 0 -24px;
+        padding: 10px 10% 30px 10%; /* Padding creates space for snapping */
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;  /* IE and Edge */
+    }
+
+    .testimonials-grid::-webkit-scrollbar {
+        display: none; /* Safari and Chrome */
+    }
+
+    .testimonial-video-card {
+        flex: 0 0 80%;
+        max-width: 320px;
+        scroll-snap-align: center; /* Snap cards to the center */
+    }
+    /* === END MODIFICATION === */
     
     /* --- RESPONSIVE CERTIFICATION STYLES --- */
     .certifications-grid {
@@ -1425,16 +1461,17 @@ footer {
     }
     .cert-item {
         aspect-ratio: 1.6 / 1;
-        padding: 1.5rem;
+        padding: 1.25rem; /* Reduced padding for more space */
     }
     .cert-script-title {
-        font-size: 1.3rem; 
+        font-size: 1.15rem;
     }
     .cert-main-title {
-        font-size: 1.2rem;
+        font-size: 1.0rem;
+        letter-spacing: 0.08em; /* Slightly tighter for smaller screens */
     }
     .cert-awarder {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
     }
 
     /* --- RESPONSIVE SCROLL-DOWN ICON --- */
@@ -1451,59 +1488,4 @@ footer {
         top: 7px;     /* Adjust the wheel's position inside the smaller mouse */
         height: 6px;  /* Make the wheel smaller */
     }
-    /* Paste this inside your @media (max-width: 768px) block */
-
-/* --- RESPONSIVE CERTIFICATION STYLES --- */
-.certifications-grid {
-    grid-template-columns: 1fr;
-    max-width: 500px;
 }
-.cert-item {
-    aspect-ratio: 1.6 / 1;
-    padding: 1.25rem; /* Reduced padding for more space */
-}
-.cert-script-title {
-    font-size: 1.15rem; /* Was 1.3rem */
-}
-.cert-main-title {
-    font-size: 1.0rem; /* Was 1.2rem */
-    letter-spacing: 0.08em; /* Slightly tighter for smaller screens */
-}
-.cert-awarder {
-    font-size: 0.85rem; /* Was 0.9rem */
-}
-}
-
-/* --- Header Logo & Back Arrow Alignment --- */
-.logo-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.back-link {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%) translateX(calc(-100% - 16px));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-dark);
-    padding: 8px;
-    border-radius: 50%;
-    transition: background-color 0.3s ease;
-}
-
-.back-link:hover {
-    background-color: var(--bg-secondary-light);
-}
-
-.back-link svg {
-    width: 24px;
-    height: 24px;
-    stroke: currentColor;
-    stroke-width: 2.5;
-}
-
-

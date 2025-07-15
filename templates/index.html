@@ -6,37 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TeamGreekGods</title>
     
-    <!-- ==================== Social Media Meta Tags (for Sharing) ==================== -->
+    <!-- Social Media Meta Tags -->
     <meta name="description" content="Join Coach Abdeslam Laraki and unlock your potential with fitness programs designed for You.">
-    
-    <!-- Open Graph / Facebook / WhatsApp -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ request.url or url_for('home', _external=True) }}">
     <meta property="og:title" content="TeamGreekGods: Transform Your Body">
     <meta property="og:description" content="Join Coach Abdeslam Laraki and unlock your potential with fitness programs designed for You.">
-    <!-- Note: For best results, create a dedicated 1200x630px image for social sharing -->
     <meta property="og:image" content="{{ url_for('static', filename='images/tgg-logo.png', _external=True) }}">
     <meta property="og:site_name" content="TeamGreekGods">
-
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="{{ request.url or url_for('home', _external=True) }}">
     <meta name="twitter:title" content="TeamGreekGods: Transform Your Body">
     <meta name="twitter:description" content="Join Coach Abdeslam Laraki and unlock your potential with fitness programs designed for You.">
-    <!-- Note: For best results, create a dedicated 1200x630px image for social sharing -->
     <meta name="twitter:image" content="{{ url_for('static', filename='images/tgg-logo.png', _external=True) }}">
     <meta name="twitter:site" content="@LarakiAbs">
-    <!-- ============================================================================== -->
     
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css', v=cache_buster) }}">    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css', v=cache_buster) }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" href="{{ url_for('static', filename='images/tgg-logo.png') }}" type="image/x-icon">
-
 </head>
 <body>
 
-    <!-- ==================== Header ==================== -->
+    <!-- Header -->
     <header>
         <div class="container header-container">
             <div class="logo-container">
@@ -57,29 +50,21 @@
             <div class="header-actions">
                 <a href="https://wa.me/212705185468" target="_blank" rel="noopener noreferrer" class="btn btn-dark">Join Now</a>
                 <button class="mobile-nav-toggle" aria-label="Toggle mobile menu">
-                    <svg class="icon-open" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="4" y1="6" x2="16" y2="6"></line>
-                        <line x1="4" y1="12" x2="20" y2="12"></line>
-                        <line x1="4" y1="18" x2="12" y2="18"></line>
-                      </svg>
-                       
-                    <!-- New, premium-style close icon -->
-                    <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M18 6L6 18"></path>
-                        <path d="M6 6l12 12"></path>
-                      </svg>  
+                    <svg class="icon-open" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="16" y2="6"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="18" x2="12" y2="18"></line></svg>
+                    <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"></path><path d="M6 6l12 12"></path></svg>  
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- ==================== Mobile Navigation ==================== -->
+    <!-- Mobile Navigation -->
     <div class="mobile-nav">
         <nav>
             <ul>
                 <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#features">Features</a></li>
                 <li><a href="#about">Coach</a></li>
+                <li><a href="#faq">Faq</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="https://wa.me/212705185468" target="_blank" rel="noopener noreferrer" style="color: #f5c518;">Join Now</a></li>
             </ul>
@@ -87,7 +72,7 @@
     </div>
 
     <main>
-        <!-- ==================== Hero Section ==================== -->
+        <!-- Hero Section -->
         <section class="hero">
             <div class="container">
                 <h1>Transform Your Body</h1>
@@ -100,22 +85,19 @@
                     </a>
                 </div>
             </div>
+            <a href="#testimonials" class="scroll-down-icon" aria-label="Scroll down">
+                <div class="mouse"><div class="wheel"></div></div>
+            </a>
         </section>
 
-       <!-- SCROLL DOWN ICON -->
-       <a href="#testimonials" class="scroll-down-icon" aria-label="Scroll down">
-            <div class="mouse">
-                <div class="wheel"></div>
-            </div>
-        </a>
-        <!-- ==================== Testimonials Section ==================== -->
+        <!-- Testimonials Section -->
         <section id="testimonials" class="testimonials">
             <div class="container">
-                <!-- Video Testimonials -->
                 <div class="video-testimonials-container">
                     <p class="section-tag">Success Stories</p>
                     <h2>What Our Champions Say</h2>
-                    <div class="testimonials-grid">
+
+                    <div class="testimonials-grid" id="testimonials-scroller">
                         <div class="testimonial-video-card" data-video-id="fCrR09rkbXY"><div class="video-thumbnail-wrapper"><img src="https://i.ytimg.com/vi/fCrR09rkbXY/hqdefault.jpg" alt="Video testimonial from Mustapha Swinga" class="video-thumbnail"><div class="play-icon"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="48" fill="rgba(255,255,255,0.9)" stroke-width="0"></circle><polygon points="40,30 70,50 40,70" fill="#0A0A0A"></polygon></svg></div></div><div class="testimonial-info"><div class="stars">★★★★★</div><h4>Mustapha Swinga</h4></div></div>
                         <div class="testimonial-video-card" data-video-id="GhrNBZvslTM"><div class="video-thumbnail-wrapper"><img src="https://i.ytimg.com/vi/GhrNBZvslTM/hqdefault.jpg" alt="Video testimonial from Othman Benhami" class="video-thumbnail"><div class="play-icon"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="48" fill="rgba(255,255,255,0.9)" stroke-width="0"></circle><polygon points="40,30 70,50 40,70" fill="#0A0A0A"></polygon></svg></div></div><div class="testimonial-info"><div class="stars">★★★★★</div><h4>Othman Benhami</h4></div></div>
                         <div class="testimonial-video-card" data-video-id="m0Q1bVjahaM"><div class="video-thumbnail-wrapper"><img src="https://i.ytimg.com/vi/m0Q1bVjahaM/hqdefault.jpg" alt="Video testimonial from Amine Bekkouri" class="video-thumbnail"><div class="play-icon"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="48" fill="rgba(255,255,255,0.9)" stroke-width="0"></circle><polygon points="40,30 70,50 40,70" fill="#0A0A0A"></polygon></svg></div></div><div class="testimonial-info"><div class="stars">★★★★★</div><h4>Amine Bekkouri</h4></div></div>
@@ -130,22 +112,10 @@
                     <div class="transformation-scroller" data-animated="true">
                         <div class="scroller-wrapper">
                             <div class="scroller-inner">
-                                {% for i in range(1, 35) %}
-                                <img src="{{ url_for('static', filename='images/transformations/transformation-' ~ i ~ '.webp') }}" 
-                                     alt="Transformation {{ i }}" 
-                                     class="transformation-image" 
-                                     loading="lazy" 
-                                     decoding="async">
-                                {% endfor %}
+                                {% for i in range(1, 35) %}<img src="{{ url_for('static', filename='images/transformations/transformation-' ~ i ~ '.webp') }}" alt="Transformation {{ i }}" class="transformation-image" loading="lazy" decoding="async">{% endfor %}
                             </div>
                             <div class="scroller-inner" aria-hidden="true">
-                                {% for i in range(1, 35) %}
-                                <img src="{{ url_for('static', filename='images/transformations/transformation-' ~ i ~ '.webp') }}" 
-                                     alt="Transformation {{ i }}" 
-                                     class="transformation-image" 
-                                     loading="lazy" 
-                                     decoding="async">
-                                {% endfor %}
+                                {% for i in range(1, 35) %}<img src="{{ url_for('static', filename='images/transformations/transformation-' ~ i ~ '.webp') }}" alt="Transformation {{ i }}" class="transformation-image" loading="lazy" decoding="async">{% endfor %}
                             </div>
                         </div>
                     </div>                    
@@ -153,8 +123,8 @@
             </div>
         </section>
 
-         <!-- ==================== Features Section ==================== -->
-         <section id="features" class="features">
+        <!-- Features Section -->
+        <section id="features" class="features">
             <div class="container">
               <p class="section-tag-light-bg">Why Choose Us</p>
               <h2>Our Features</h2>
@@ -168,15 +138,14 @@
                 <div class="feature-card"><div class="icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 12 15 17 10"/></svg></div><h3>Expert-Validated Methods</h3><p>Benefit from a scientifically backed approach developed with nutrition and sports professionals for safe, effective results.</p></div>
               </div>
             </div>
-          </section>
+        </section>
 
-        <!-- ==================== App Promo Section ==================== -->
+        <!-- App Promo Section -->
         <section class="app-promo">
             <div class="container app-promo-container">
                 <div class="app-promo-content">
                     <h2>Train Anywhere, Anytime</h2>
                     <p class="subtitle">Download the TGG Fit app and take your fitness journey with you. Access workouts, track progress, and stay connected with your coach.</p>
-                    
                 </div>
                 <div class="app-promo-video-container">
                     <div class="app-promo-video-card" data-video-id="BjvwT-iELls"><img src="https://i.ytimg.com/vi/BjvwT-iELls/hqdefault.jpg" alt="Team Greek Gods App Promo" class="video-thumbnail"><div class="play-icon"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="48" fill="rgba(255,255,255,0.9)" stroke-width="0"></circle><polygon points="40,30 70,50 40,70" fill="#0A0A0A"></polygon></svg></div></div>
@@ -188,13 +157,12 @@
             </div>
         </section>
 
-        <!-- ==================== About Coach Section ==================== -->
+        <!-- About Coach Section -->
         <section id="about" class="about">
             <div class="container about-container">
                 <div class="about-content">
                     <h2>Abdeslam Laraki</h2>
-                    <p class="subtitle-dark">A few years ago, like many others, I struggled with unscientific diets and poorly adapted training that compromised my metabolism. Frustrated by these failures, I decided to educate myself, invest in myself, and understand the true needs of the body.<br><br>
-                        This is how Team Greek Gods was born, with a <span>clear mission:</span> to help others stop wasting time and money, and to avoid destructive diets. Since that day, our goal has been to deliver lasting results through a scientific approach and daily support.</p>
+                    <p class="subtitle-dark">A few years ago, like many others, I struggled with unscientific diets and poorly adapted training... This is how Team Greek Gods was born, with a <span>clear mission:</span> to help others stop wasting time and money, and to avoid destructive diets. Since that day, our goal has been to deliver lasting results through a scientific approach and daily support.</p>
                     <div class="stats">
                         <div class="stat-item"><h3>9+</h3><p>Years Experience</p></div>
                         <div class="stat-item"><h3>9K+</h3><p>Satisfied Clients</p></div>
@@ -203,46 +171,25 @@
                     <a href="{{ url_for('coach') }}" rel="noopener noreferrer" class="btn btn-dark">Know More About Coach</a>
                 </div>
                 <div class="about-image-wrapper">
-                    <!-- This image is still a .png, so we leave it as is. -->
-                    <img src="{{ url_for('static', filename='images/coach-image.webp') }}" 
-                         alt="Coach Abdeslam Laraki in the gym" 
-                         loading="lazy" 
-                         decoding="async">
+                    <img src="{{ url_for('static', filename='images/coach-image.webp') }}" alt="Coach Abdeslam Laraki in the gym" loading="lazy" decoding="async">
                 </div>
             </div>
         </section>
 
-        <!-- ==================== Press Logos Section ==================== -->
+        <!-- Press Logos Section -->
         <section class="press-section">
             <div class="container">
                 <h3 class="press-title">As Seen On</h3>
                 <div class="press-scroller" data-animated="true">
                     <div class="scroller-wrapper">
-                        <!-- This loop works because the files are still .png, so we leave it. -->
-                        <div class="scroller-inner">
-                            {% for i in range(1, 8) %}
-                            <img src="{{ url_for('static', filename='images/press/press-' ~ i ~ '.webp') }}" 
-                                 alt="Press Logo {{ i }}" 
-                                 class="press-logo" 
-                                 loading="lazy" 
-                                 decoding="async">
-                            {% endfor %}
-                        </div>
-                        <div class="scroller-inner" aria-hidden="true">
-                            {% for i in range(1, 8) %}
-                            <img src="{{ url_for('static', filename='images/press/press-' ~ i ~ '.webp') }}" 
-                                 alt="Press Logo {{ i }}" 
-                                 class="press-logo" 
-                                 loading="lazy" 
-                                 decoding="async">
-                            {% endfor %}
-                        </div>
+                        <div class="scroller-inner">{% for i in range(1, 8) %}<img src="{{ url_for('static', filename='images/press/press-' ~ i ~ '.webp') }}" alt="Press Logo {{ i }}" class="press-logo" loading="lazy" decoding="async">{% endfor %}</div>
+                        <div class="scroller-inner" aria-hidden="true">{% for i in range(1, 8) %}<img src="{{ url_for('static', filename='images/press/press-' ~ i ~ '.webp') }}" alt="Press Logo {{ i }}" class="press-logo" loading="lazy" decoding="async">{% endfor %}</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ==================== FAQ Section ==================== -->
+        <!-- FAQ Section -->
         <section id="faq" class="faq">
             <div class="container">
                 <p class="section-tag-light-bg">Got Questions?</p>
@@ -258,7 +205,7 @@
             </div>
         </section>
 
-        <!-- ==================== Final CTA Section ==================== -->
+        <!-- Final CTA Section -->
         <section class="cta" id="join-now">
             <div class="container">
                 <h2>Ready to Become a Greek God?</h2>
@@ -268,7 +215,7 @@
         </section>
     </main>
 
-    <!-- ==================== Footer ==================== -->
+    <!-- Footer -->
     <footer id="contact">
         <div class="container footer-container">
             <div class="footer-about"><a href="{{ url_for('home') }}" class="logo footer-logo"><img src="{{ url_for('static', filename='images/tgg-logo.png') }}" alt="Team Greek Gods Logo" width="40" height="40"><span style="color: white;">TEAMGREEKGODS</span></a><p>Follow Us On Social Media</p><div class="socials"><a href="https://www.instagram.com/teamgreekgods/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg style="color: white;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a><a href="https://www.facebook.com/profile.php?id=100083533650189" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg style="color: white;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a><a href="https://x.com/LarakiAbs" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><svg style="color: white;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16"><path d="M9.5,6.8l5.8-6.2h-1.4l-5,5.4l-4-5.4H0l6.2,8.2L0,15.5h1.4l5.4-5.9l4.4,5.9H16L9.5,6.8z M2.1,1.6h2.2l9.7,12.9h-2.2L2.1,1.6z"/></svg></a><a href="https://www.youtube.com/@AbdeslamLaraki" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg style="color: white;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a1.64 1.64 0 0 0-1.16-1.16C19.95 4.5 12 4.5 12 4.5s-7.95 0-9.38.76a1.64 1.64 0 0 0-1.16 1.16C.7 7.85 0 12 0 12s.7 4.15 1.46 5.58a1.64 1.64 0 0 0 1.16 1.16c1.43.76 9.38.76 9.38.76s7.95 0 9.38-.76a1.64 1.64 0 0 0 1.16-1.16c.76-1.43 1.46-5.58 1.46-5.58s-.7-4.15-1.46-5.58z"></path><polygon points="9.5 15.5 15.5 12 9.5 8.5 9.5 15.5"></polygon></svg></a></div></div>
@@ -277,18 +224,17 @@
         <div class="footer-bottom"><p>© 2025 <span style="color: white;" >TeamGreekGods</span>. All rights reserved.</p></div>
     </footer>
 
+    <!-- Video Modal -->
     <div class="video-modal" id="story-modal">
-        <div class="modal-content" id="story-modal-content">
-            <!-- The YouTube iframe will be inserted here by JavaScript -->
-        </div>
+        <div class="modal-content" id="story-modal-content"></div>
         <button class="modal-close" id="modal-close-btn" aria-label="Close video">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         </button>
     </div>
 
     <script>
-        // This JavaScript is correct and handles all the logic as intended.
         document.addEventListener('DOMContentLoaded', function() {
+            // --- Standard Page Logic (Mobile Nav, Modals, FAQ) ---
             const body = document.querySelector('body');
             const navToggle = document.querySelector('.mobile-nav-toggle');
             const mobileNav = document.querySelector('.mobile-nav');
@@ -316,11 +262,6 @@
                 const openModal = (e) => {
                     e.preventDefault();
                     const videoId = watchStoryBtn.dataset.videoId;
-                    if (!videoId || videoId === 'YOUR_YOUTUBE_ID_HERE') {
-                        console.error('YouTube Video ID not set. Please update the data-video-id attribute.');
-                        alert('Story video is not available yet.');
-                        return;
-                    }
                     const iframe = document.createElement('iframe');
                     iframe.setAttribute('src', `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`);
                     iframe.setAttribute('frameborder', '0');
@@ -335,17 +276,20 @@
                 const closeModal = () => {
                     storyModal.classList.remove('active');
                     body.classList.remove('modal-open');
-                    storyModalContent.innerHTML = ''; 
+                    storyModalContent.innerHTML = '';
                 };
                 watchStoryBtn.addEventListener('click', openModal);
                 closeModalBtn.addEventListener('click', closeModal);
                 storyModal.addEventListener('click', (e) => e.target === storyModal && closeModal());
                 document.addEventListener('keydown', (e) => e.key === 'Escape' && storyModal.classList.contains('active') && closeModal());
             }
-            const videoPlayers = document.querySelectorAll('[data-video-id]:not(#watch-story-btn)');
+            const videoPlayers = document.querySelectorAll('.testimonial-video-card, .app-promo-video-card');
             videoPlayers.forEach(player => {
-                player.addEventListener('click', function() {
+                player.addEventListener('click', function(e) {
                     if (this.classList.contains('video-is-playing')) return;
+                    // Prevent clicks on carousel buttons from triggering video play
+                    if (e.target.closest('.testimonial-carousel-btn')) return;
+
                     const videoId = this.dataset.videoId;
                     if (videoId) {
                         const iframe = document.createElement('iframe');
@@ -354,11 +298,12 @@
                         iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
                         iframe.setAttribute('allowfullscreen', '');
                         iframe.classList.add('youtube-iframe');
+                        
                         const thumbnailWrapper = this.querySelector('.video-thumbnail-wrapper');
                         if (thumbnailWrapper) {
                             thumbnailWrapper.innerHTML = '';
                             thumbnailWrapper.appendChild(iframe);
-                        } else {
+                        } else { // Fallback for app promo video
                             this.innerHTML = '';
                             this.appendChild(iframe);
                         }
