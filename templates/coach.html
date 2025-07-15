@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Main font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Fonts for the new Diploma Style Cards -->
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;700&family=Pinyon+Script&family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="{{ url_for('static', filename='images/tgg-logo.png') }}" type="image/x-icon">
 
 </head>
@@ -87,8 +90,6 @@
                     </p>
                 </div>
             </div>
-
-            
         </section>
 
         <!-- ==================== Press Logos Section ==================== -->
@@ -112,8 +113,7 @@
             </div>
         </section>
         
-
-        <!-- ADDED SECTION: Video Playlist -->
+        <!-- ==================== Video Playlist Section ==================== -->
         <section class="video-playlist">
             <div class="container">
                 <h2 style="text-align: center; margin-bottom: 60px;">Who Is Abdeslam Laraki?</h2>
@@ -149,41 +149,42 @@
             </div>
         </section>
 
-
         <!-- ==================== Certifications Section ==================== -->
         <section id="certifications" class="certifications">
             <div class="container">
                 <p class="section-tag-light-bg">Credentials</p>
-                <h2>Certifications</h2>
-                <p class="subtitle subtitle-dark">Committed to excellence through continuous education and professional development.</p>
+                <h2>My Certifications</h2>
+                <p class="subtitle subtitle-dark">A commitment to excellence, backed by accredited, industry-leading qualifications.</p>
+                
                 <div class="certifications-grid">
+                    
+                    <!-- Certificate 1: ISSA -->
                     <div class="cert-item">
-                        <div class="icon-wrapper">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="8" r="7"></circle>
-                                <polyline points="8.21 13.89 7 23 12 17 17 23 15.79 13.88"></polyline>
-                            </svg>
+                        <div class="cert-content">
+                            <span class="cert-script-title">Certified Professional</span>
+                            <h4 class="cert-main-title">Personal Trainer & Nutritionist</h4>
+                            <p class="cert-awarder">Awarded by<br><strong>ISSA (International Sports Sciences Association)</strong></p>
                         </div>
-                        <h4>ISSA (International Sports Sciences Association)</h4>
                     </div>
+
+                    <!-- Certificate 2: NASM -->
                     <div class="cert-item">
-                        <div class="icon-wrapper">
-                            <svg xmlns="http="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="8" r="7"></circle>
-                                <polyline points="8.21 13.89 7 23 12 17 17 23 15.79 13.88"></polyline>
-                            </svg>
+                        <div class="cert-content">
+                            <span class="cert-script-title">Certified Specialist</span>
+                            <h4 class="cert-main-title">Sports Medicine & Performance</h4>
+                            <p class="cert-awarder">Awarded by<br><strong>NASM (National Academy of Sports Medicine)</strong></p>
                         </div>
-                        <h4>NASM (National Academy of Sports Medicine)</h4>
                     </div>
+
+                    <!-- Certificate 3: Moroccan Federation -->
                     <div class="cert-item">
-                        <div class="icon-wrapper">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="8" r="7"></circle>
-                                <polyline points="8.21 13.89 7 23 12 17 17 23 15.79 13.88"></polyline>
-                            </svg>
+                        <div class="cert-content">
+                            <span class="cert-script-title">Federation Accredited</span>
+                            <h4 class="cert-main-title">National Bodybuilding Coach</h4>
+                            <p class="cert-awarder">Awarded by<br><strong>Fédération Royale Marocaine de Bodybuilding</strong></p>
                         </div>
-                        <h4>Fédération Royale Marocaine de Bodybuilding et Fitness</h4>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -229,7 +230,7 @@
                 });
             });
 
-            // ADDED SCRIPT: Interactive Video Playlist
+            // Interactive Video Playlist
             const playlistItems = document.querySelectorAll('.playlist-item');
             const playerIframe = document.getElementById('youtube-playlist-player');
             

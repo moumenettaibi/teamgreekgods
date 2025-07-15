@@ -1,5 +1,9 @@
 /* static/css/style.css */
 
+/* ADDED: Fonts for the new Diploma Style Cards */
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;700&family=Pinyon+Script&family=Cinzel+Decorative:wght@400;700&display=swap');
+
+/* Root variables remain unchanged */
 :root {
     --bg-dark: #000000;
     --bg-light: #FFFFFF;
@@ -128,41 +132,38 @@ section { padding: 120px 0; }
     }
 }
 
-
 /* --- Buttons --- */
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px; /* Further reduced gap */
-    padding: 12px 24px; /* Reduced padding for a smaller size */
-    border-radius: 99px; /* This creates the circular/pill shape */
-    font-size: 0.875rem; /* Smaller font (14px equivalent) */
-    font-weight: 600; /* Adjusted font-weight for smaller size clarity */
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 99px;
+    font-size: 0.875rem;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
     border: 2px solid transparent;
     white-space: nowrap;
-    will-change: transform; /* Performance optimization for transforms */
+    will-change: transform;
 }
 
-/* Use this button on LIGHT backgrounds */
 .btn-dark {
-    background-color: #000000; /* Extra black as requested */
+    background-color: #000000;
     color: var(--text-light);
     border-color: #000000;
 }
 
 .btn-dark:hover {
-    background-color: var(--bg-light); /* Inverts to white on hover */
-    color: #000000; /* Text inverts to black */
-    transform: translateY(-3px) scale(1.03); /* Softer hover effect */
-    box-shadow: var(--shadow-md); /* Adjusted shadow for smaller button */
+    background-color: var(--bg-light);
+    color: #000000;
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: var(--shadow-md);
 }
 
-/* Use this button on DARK backgrounds */
 .btn-light {
     background-color: var(--bg-light);
     color: #000000;
@@ -170,14 +171,12 @@ section { padding: 120px 0; }
 }
 
 .btn-light:hover {
-    background-color: #000000; /* Inverts to black on hover */
-    color: var(--text-light); /* Text inverts to white */
-    transform: translateY(-3px) scale(1.03); /* Softer hover effect */
-    /* A custom shadow for dark backgrounds */
+    background-color: #000000;
+    color: var(--text-light);
+    transform: translateY(-3px) scale(1.03);
     box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1), 0 4px 8px rgba(255, 255, 255, 0.05);
 }
 
-/* A premium take on the outline button for dark backgrounds */
 .btn-outline {
     background-color: transparent;
     color: var(--text-light);
@@ -194,27 +193,23 @@ section { padding: 120px 0; }
 
 .btn svg {
     transition: transform 0.3s ease;
-    width: 16px; /* Explicitly set a smaller icon size */
+    width: 16px;
     height: 16px;
 }
 
-
-/* --- Premium CTA (Sales) Button --- */
 .btn-cta {
-    background-color: var(--accent-color); /* The catchy yellow #f5c518 */
-    color: #000000; /* High-contrast black text */
+    background-color: var(--accent-color);
+    color: #000000;
     border-color: var(--accent-color);
-    font-weight: 700; /* Bolder to feel more important */
-    /* Apply the eye-catching glow animation */
+    font-weight: 700;
     animation: pulse-glow 2.5s infinite ease-in-out;
 }
 
 .btn-cta:hover {
-    animation: none; /* Pause the glow on hover for a clean transition */
-    background-color: #000000; /* Inverts to black on hover */
-    color: var(--text-light); /* Text inverts to white */
-    transform: translateY(-5px) scale(1.05); /* A slightly more dramatic transform */
-    /* A custom shadow for dark backgrounds */
+    animation: none;
+    background-color: #000000;
+    color: var(--text-light);
+    transform: translateY(-5px) scale(1.05);
     box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1), 0 5px 10px rgba(255, 255, 255, 0.05);
 }
 
@@ -230,17 +225,15 @@ header {
     border-bottom: 1px solid var(--border-color-light);
 }
 
-/* START: MODIFIED SECTION FOR PERFECT EDGE ALIGNMENT */
 .header-container {
     display: flex;
-    justify-content: space-between; /* This is key: pushes logo/actions to edges */
+    justify-content: space-between;
     align-items: center;
     width: 100%;
-    max-width: 100%; /* Override the 1200px constraint from .container */
-    margin: 12; /* Remove auto margin */
-    padding: 0 85px; /* Adds 32px of space on the far left/right of the screen */
+    max-width: 100%;
+    margin: 12;
+    padding: 0 85px;
 }
-/* END: MODIFIED SECTION */
 
 .logo {
     display: flex;
@@ -255,7 +248,6 @@ header {
     object-fit: cover;
 }
 header nav {
-    /* The parent's justify-content: space-between will center the nav automatically */
     display: flex;
     align-items: center;
 }
@@ -350,7 +342,6 @@ header nav a:hover::after {
     color: var(--accent-color);
 }
 
-
 /* --- Hero Section --- */
 .hero {
     background-color: var(--bg-dark);
@@ -361,7 +352,7 @@ header nav a:hover::after {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    position: relative; /* ADDED for positioning the scroll icon */
+    position: relative;
 }
 .hero-buttons {
     margin-top: 48px;
@@ -379,37 +370,35 @@ header nav a:hover::after {
     transform: translateX(-50%);
     z-index: 2;
     cursor: pointer;
-    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); /* Smoother transition */
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-/* Add a subtle lift and glow on hover for better interactivity */
 .scroll-down-icon:hover {
     transform: translateX(-50%) translateY(-5px);
 }
 
 .scroll-down-icon .mouse {
-    width: 26px;  /* Sleeker width */
-    height: 44px; /* Sleeker height */
-    border: 2px solid rgba(0, 0, 0, 0.7); /* CORRECTED: White and semi-transparent */
+    width: 26px;
+    height: 44px;
+    border: 2px solid rgba(0, 0, 0, 0.7);
     border-radius: 60px;
     position: relative;
     transition: border-color 0.4s ease;
 }
 
 .scroll-down-icon:hover .mouse {
-    border-color: #000000; /* Becomes solid white on hover */
+    border-color: #000000;
 }
 
 .scroll-down-icon .wheel {
     position: absolute;
     top: 8px;
     left: 50%;
-    /* The translateX must be in the animation keyframes */
-    background-color: #000000; /* CORRECTED: White wheel */
-    width: 3px;  /* Thinner for a more refined look */
+    background-color: #000000;
+    width: 3px;
     height: 7px;
     border-radius: 2px;
-    opacity: 1; /* Start fully visible */
+    opacity: 1;
     animation: scroll-wheel-animation 2.2s ease-in-out infinite;
 }
 
@@ -425,23 +414,17 @@ header nav a:hover::after {
   }
   50% {
     opacity: 0;
-    transform: translate(-50%, 15px); /* Wheel travels down */
+    transform: translate(-50%, 15px);
   }
   51% {
     opacity: 0;
-    transform: translate(-50%, -8px); /* Instantly moves back to top, but invisible */
+    transform: translate(-50%, -8px);
   }
   100% {
     opacity: 1;
-    transform: translate(-50%, 0); /* Fades in at the top for a clean loop */
+    transform: translate(-50%, 0);
   }
 }
-
-/* This is the old, unused animation. You can delete it. */
-/* 
-@keyframes scroll-animation { ... }
-*/
-
 
 /* --- About Section --- */
 .about {
@@ -701,7 +684,6 @@ header nav a:hover::after {
     background-color: #e8e8e8;
     padding: 4px 8px;
     border-radius: 6px;
-    /* These properties ensure the highlight breaks correctly across lines */
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;
     line-height: 1.8;
@@ -772,7 +754,7 @@ header nav a:hover::after {
     color: var(--text-secondary-dark);
     line-height: 1.7;
     font-size: 0.95rem;
-    padding: 0 24px 0 74px; /* Align with question text */
+    padding: 0 24px 0 74px;
 }
 .faq-answer p {
     margin: 0;
@@ -781,9 +763,8 @@ header nav a:hover::after {
     font-weight: 600;
     color: var(--text-dark);
 }
-/* Active State */
 .faq-item.active .faq-answer {
-    max-height: 300px; /* Adjust if answers are longer */
+    max-height: 300px;
     padding: 0 24px 24px 74px;
     transition: max-height 0.5s ease-in, padding 0.5s ease-in;
 }
@@ -815,8 +796,7 @@ header nav a:hover::after {
     filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
 }
 
-/* ================== THIS IS THE FIX (Part 1) ================== */
-/* The iframe should just fill its parent container. It doesn't need its own aspect-ratio or z-index. */
+/* --- YouTube iframe fix --- */
 .youtube-iframe {
     position: absolute;
     top: 0;
@@ -824,7 +804,7 @@ header nav a:hover::after {
     width: 100%;
     height: 100%;
     border: 0;
-    border-radius: inherit; /* This makes it adopt the parent's rounded corners */
+    border-radius: inherit;
 }
 
 /* --- CTA --- */
@@ -833,7 +813,7 @@ header nav a:hover::after {
     background-color: var(--bg-dark);
     color: var(--text-light);
 }
-.cta .btn { /* Changed from .btn-light to .btn */
+.cta .btn {
     margin-top: 48px; 
 }
 
@@ -892,7 +872,6 @@ footer {
     font-size: 0.875rem;
 }
 
-
 /* --- Coach Page Styles --- */
 .coach-hero {
     background-color: var(--bg-secondary-light);
@@ -909,36 +888,146 @@ footer {
 .coach-details .about-content h2:first-of-type {
     margin-top: 0;
 }
+
+/* --- Certifications Section --- */
 .certifications {
-    background-color: var(--bg-secondary-light);
+    background-color: #f8f9fa; 
     text-align: center;
-}
-.certifications-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
-    margin-top: 80px;
-    text-align: left;
-}
-.cert-item {
-    background: var(--bg-light);
-    padding: 30px;
-    border-radius: 20px;
-    border: 1px solid var(--border-color-light);
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-.cert-item .icon-wrapper {
-    margin-bottom: 0;
-    flex-shrink: 0;
-}
-.cert-item h4 {
-    font-size: 1.125rem;
-    margin: 0;
-    font-weight: 600;
+    padding-top: 80px;
+    padding-bottom: 120px; 
 }
 
+.certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 32px;
+    width: 100%;
+    max-width: 1400px; 
+    margin: 80px auto 0 auto;
+    padding: 0 24px; 
+}
+
+.cert-item {
+    position: relative;
+    aspect-ratio: 1.7 / 1; 
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 1.75rem;
+    display: flex;
+    color: #2b2b2b;
+    overflow: hidden;
+    box-shadow: 
+        inset 0 0 0 1px rgba(184, 155, 94, 0.4),
+        0 0 0 1px #e8d9b8,
+        0 0 0 5px #b89b5e,
+        5px 5px 25px rgba(0, 0, 0, 0.1);
+    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100" height="100" filter="url(%23noise)" opacity="0.04"/%3E%3C/svg%3E');
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cert-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 
+        inset 0 0 0 1px rgba(184, 155, 94, 0.4),
+        0 0 0 1px #e8d9b8,
+        0 0 0 5px #a68b4c, 
+        8px 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 1200px) {
+    .certifications-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 900px;
+    }
+}
+
+@media (max-width: 768px) {
+    .certifications-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+    }
+    .cert-item {
+        aspect-ratio: 1.6 / 1;
+        padding: 1.5rem;
+    }
+}
+
+.cert-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    z-index: 2;
+}
+
+
+/* --- TYPOGRAPHY FOR PERFECT CENTERING --- */
+
+.cert-script-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.1rem;
+    line-height: 1.1;
+    color: #8c734b;
+    /* Remove bottom margin to let flexbox handle all spacing */
+    margin-bottom: 0; 
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.cert-main-title {
+    font-family: 'EB Garamond', serif;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #1a2b45;
+    line-height: 1.2;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    /* This is the first half of the magic: it pushes down from the top element */
+    margin-top: auto; 
+    margin-bottom: 0; /* Reset bottom margin */
+}
+
+.cert-awarder {
+    font-family: 'EB Garamond', serif;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #6e5f45;
+    /* This is the second half: it pushes down from the middle element */
+    margin-top: auto;
+    /* Remove padding to ensure pure centering */
+    padding-top: 0;
+}
+
+.cert-awarder strong {
+    color: #1a2b45;
+    font-weight: 700;
+}
+
+
+/* --- Decorative Corners (Unchanged) --- */
+.cert-item::before,
+.cert-item::after {
+    content: '';
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    z-index: 1;
+    opacity: 0.15; 
+    pointer-events: none;
+    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Cpath d="M10,90 C30,70 50,80 70,90 C60,60 80,40 90,10 C70,30 50,20 30,10 C40,40 20,60 10,90" fill="none" stroke="%23b89b5e" stroke-width="3"/%3E%3C/svg%3E');
+}
+
+.cert-item::before {
+    top: -45px;
+    left: -45px;
+}
+
+.cert-item::after {
+    bottom: -45px;
+    right: -45px;
+    transform: rotate(180deg);
+}
 /* --- Video Playlist Section --- */
 .video-playlist {
     padding-top: 0;
@@ -963,7 +1052,7 @@ footer {
 }
 .video-thumbnail-list {
     display: flex;
-    justify-content: center; /* This is the added line to center the thumbnails */
+    justify-content: center;
     gap: 16px;
     overflow-x: auto;
     padding: 10px 4px;
@@ -1011,7 +1100,7 @@ footer {
     border-color: var(--text-dark);
 }
 
-/* --- Custom Video Player & Modal (Simplified) --- */
+/* --- Custom Video Player & Modal --- */
 .video-modal {
     position: fixed;
     top: 0;
@@ -1035,8 +1124,6 @@ footer {
     visibility: visible;
 }
 
-/* ================== THIS IS THE FIX (Part 2) ================== */
-/* The container defines the shape and size. The aspect-ratio here is key. */
 .modal-content {
     position: relative;
     width: 90%;
@@ -1079,7 +1166,6 @@ footer {
     background-color: var(--bg-light);
 }
 
-/* Centered Play/Pause Button */
 .modal-content .play-pause-btn {
     position: absolute;
     top: 50%;
@@ -1124,7 +1210,6 @@ footer {
 .modal-content.paused .play-pause-btn .play-icon { display: block; }
 .modal-content:not(.paused) .play-pause-btn .pause-icon { display: block; }
 
-/* Bottom Controls Container */
 .video-controls-container {
     position: absolute;
     bottom: 0;
@@ -1174,7 +1259,6 @@ footer {
 .timeline-container:hover .timeline-progress::after {
     transform: translate(50%, -50%) scale(1);
 }
-
 
 /* --- Responsive Design --- */
 @media (max-width: 1200px) {
@@ -1240,7 +1324,6 @@ footer {
     
     .header-actions .btn-dark { display: none; }
 
-    /* On mobile, spread the logo and hamburger menu apart */
     .header-container {
         padding: 0 24px;
         justify-content: space-between;
@@ -1305,11 +1388,30 @@ footer {
         width: 35px;
         height: 35px;
     }
+    .cert-item {
+        padding: 2rem;
+        min-height: 280px;
+    }
+    .cert-script-title {
+        font-size: 2rem;
+    }
+    .cert-main-title {
+        font-size: 1.5rem;
+    }
+    .cert-awarder {
+        font-size: 1rem;
+    }
+    .cert-seal {
+        width: 70px;
+        height: 70px;
+    }
+    .cert-seal svg {
+        width: 40px;
+        height: 40px;
+    }
 }
 
-
-/* === HEADER LOGO & BACK ARROW ALIGNMENT (FINAL) === */
-
+/* --- Header Logo & Back Arrow Alignment --- */
 .logo-container {
     position: relative;
     display: flex;
@@ -1320,7 +1422,6 @@ footer {
     position: absolute;
     top: 50%;
     left: 0;
-    /* This transform moves the arrow left of the logo without affecting the logo's position */
     transform: translateY(-50%) translateX(calc(-100% - 16px));
     display: flex;
     align-items: center;
