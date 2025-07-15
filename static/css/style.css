@@ -622,26 +622,43 @@ header nav a:hover::after {
     .scroller-wrapper { animation: none; }
 }
 
-/* --- App Promo Section & Video --- */
-.app-promo { background-color: var(--bg-dark); color: var(--text-light); }
+/* --- App Promo Section & Video (REVISED) --- */
+.app-promo { 
+    background-color: var(--bg-dark); 
+    color: var(--text-light); 
+}
 .app-promo-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 100px;
     align-items: center;
+    column-gap: 100px;
+    row-gap: 30px;      /* Controls vertical space between text and buttons */
 }
-.app-promo-content h2 { margin-bottom: 24px; }
-.app-promo-content p { color: var(--text-secondary); }
+.app-promo-content h2 { 
+    margin-bottom: 24px; 
+}
+.app-promo-content p { 
+    color: var(--text-secondary); 
+}
+.app-promo-content {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: end; /* Aligns text to the bottom of its grid area */
+}
 .app-buttons {
-    margin-top: 48px;
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start; /* Aligns buttons to the top of their grid area */
     display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
 }
 .app-promo-video-container {
     display: flex;
     justify-content: center;
     align-items: center;
+    grid-column: 2;
+    grid-row: 1 / span 2; /* Makes video span both rows to stay centered */
 }
 .app-promo-video-card {
     position: relative;
@@ -653,6 +670,38 @@ header nav a:hover::after {
     background-color: #1a1a1a;
     box-shadow: 0 0 0 8px #111, var(--shadow-lg);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* --- Responsive styles for Tablet and Mobile --- */
+@media (max-width: 992px) {
+    .app-promo-container {
+        grid-template-columns: 1fr; /* Switch to a single column */
+        gap: 60px;                  /* Use a single gap for rows */
+        text-align: center;
+    }
+    
+    /* Reset grid placement so children stack in HTML order */
+    .app-promo-content,
+    .app-promo-video-container,
+    .app-buttons {
+        grid-column: 1;
+        grid-row: auto;
+        align-self: auto;
+    }
+
+    /* On mobile, center the buttons container */
+    .app-promo .app-buttons {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    /* For smaller phones, stack the buttons vertically and center them */
+    .app-promo .app-buttons {
+        flex-direction: column;
+        align-items: center; /* This overrides 'stretch' for a cleaner look */
+        gap: 20px;           /* Increase gap for vertical layout */
+    }
 }
 
 /* --- FAQ Section (Homepage) --- */
