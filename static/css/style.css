@@ -1,4 +1,5 @@
 /* static/css/style.css */
+/* NOTE for production: This file should be minified as part of your build process to reduce its size and improve load times. */
 
 /* ADDED: Fonts for the new Diploma Style Cards */
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;700&family=Pinyon+Script&family=Cinzel+Decorative:wght@400;700&display=swap');

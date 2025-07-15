@@ -36,4 +36,7 @@ def faq():
 
 
 if __name__ == '__main__':
+    # For production, it's recommended to use a production-ready WSGI server
+    # like Gunicorn or uWSGI, and to set security headers (CSP, X-Frame-Options, etc.)
+    # either in a reverse proxy (like Nginx) or using a library like Flask-Talisman.
     app.run(host='0.0.0.0', debug=True)
