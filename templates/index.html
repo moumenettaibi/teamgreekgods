@@ -21,11 +21,9 @@
     <meta name="twitter:image" content="{{ url_for('static', filename='images/tgg-logo.png', _external=True) }}">
     <meta name="twitter:site" content="@LarakiAbs">
     
-    <!-- Performance Optimization: Preconnect to required origins -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css', v=cache_buster) }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css', v=cache_buster) }}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" href="{{ url_for('static', filename='images/tgg-logo.png') }}" type="image/x-icon">
 </head>
@@ -100,10 +98,10 @@
                     <h2>What Our Champions Say</h2>
 
                     <div class="testimonials-grid" id="testimonials-scroller">
-                        <div class="testimonial-video-card" data-video-id="fCrR09rkbXY"><div class="video-thumbnail-wrapper"><img src="https://i.ytimg.com/vi/fCrR09rkbXY/hqdefault.jpg" alt="Video testimonial from Mustapha Swinga" class="video-thumbnail" width="480" height="360"><div class="play-icon"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="48" fill="rgba(255,255,255,0.9)" stroke-width="0"></circle><polygon points="40,30 70,50 40,70" fill="#0A0A0A"></polygon></svg></div></div><div class="testimonial-info"><div class="stars">★★★★★</div><h4>Mustapha Swinga</h4></div></div>
-                        <div class="testimonial-video-card" data-video-id="GhrNBZvslTM"><div class="video-thumbnail-wrapper"><img src="https://i.ytimg.com/vi/GhrNBZvslTM/hqdefault.jpg" alt="Video testimonial from Othman Benhami" class="video-thumbnail" width="480" height="360"><div class="play-icon"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="48" fill="rgba(255,255,255,0.9)" stroke-width="0"></circle><polygon points="40,30 70,50 40,70" fill="#0A0A0A"></polygon></svg></div></div><div class="testimonial-info"><div class="stars">★★★★★</div><h4>Othman Benhami</h4></div></div>
-                        <div class="testimonial-video-card" data-video-id="m0Q1bVjahaM"><div class="video-thumbnail-wrapper"><img src="https://i.ytimg.com/vi/m0Q1bVjahaM/hqdefault.jpg" alt="Video testimonial from Amine Bekkouri" class="video-thumbnail" width="480" height="360"><div class="play-icon"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="48" fill="rgba(255,255,255,0.9)" stroke-width="0"></circle><polygon points="40,30 70,50 40,70" fill="#0A0A0A"></polygon></svg></div></div><div class="testimonial-info"><div class="stars">★★★★★</div><h4>Amine Bekkouri</h4></div></div>
-                        <div class="testimonial-video-card" data-video-id="kUrObQgMES0"><div class="video-thumbnail-wrapper"><img src="https://i.ytimg.com/vi/kUrObQgMES0/hqdefault.jpg" alt="Video testimonial from Amine Aouni" class="video-thumbnail" width="480" height="360"><div class="play-icon"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="48" fill="rgba(255,255,255,0.9)" stroke-width="0"></circle><polygon points="40,30 70,50 40,70" fill="#0A0A0A"></polygon></svg></div></div><div class="testimonial-info"><div class="stars">★★★★★</div><h4>Amine Aouni</h4></div></div>
+                        <div class="testimonial-video-card" data-video-id="fCrR09rkbXY"><div class="video-thumbnail-wrapper"><img src="https://i.ytimg.com/vi/fCrR09rkbXY/hqdefault.jpg" alt="Video testimonial from Mustapha Swinga" class="video-thumbnail"><div class="play-icon"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="48" fill="rgba(255,255,255,0.9)" stroke-width="0"></circle><polygon points="40,30 70,50 40,70" fill="#0A0A0A"></polygon></svg></div></div><div class="testimonial-info"><div class="stars">★★★★★</div><h4>Mustapha Swinga</h4></div></div>
+                        <div class="testimonial-video-card" data-video-id="GhrNBZvslTM"><div class="video-thumbnail-wrapper"><img src="https://i.ytimg.com/vi/GhrNBZvslTM/hqdefault.jpg" alt="Video testimonial from Othman Benhami" class="video-thumbnail"><div class="play-icon"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="48" fill="rgba(255,255,255,0.9)" stroke-width="0"></circle><polygon points="40,30 70,50 40,70" fill="#0A0A0A"></polygon></svg></div></div><div class="testimonial-info"><div class="stars">★★★★★</div><h4>Othman Benhami</h4></div></div>
+                        <div class="testimonial-video-card" data-video-id="m0Q1bVjahaM"><div class="video-thumbnail-wrapper"><img src="https://i.ytimg.com/vi/m0Q1bVjahaM/hqdefault.jpg" alt="Video testimonial from Amine Bekkouri" class="video-thumbnail"><div class="play-icon"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="48" fill="rgba(255,255,255,0.9)" stroke-width="0"></circle><polygon points="40,30 70,50 40,70" fill="#0A0A0A"></polygon></svg></div></div><div class="testimonial-info"><div class="stars">★★★★★</div><h4>Amine Bekkouri</h4></div></div>
+                        <div class="testimonial-video-card" data-video-id="kUrObQgMES0"><div class="video-thumbnail-wrapper"><img src="https://i.ytimg.com/vi/kUrObQgMES0/hqdefault.jpg" alt="Video testimonial from Amine Aouni" class="video-thumbnail"><div class="play-icon"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="48" fill="rgba(255,255,255,0.9)" stroke-width="0"></circle><polygon points="40,30 70,50 40,70" fill="#0A0A0A"></polygon></svg></div></div><div class="testimonial-info"><div class="stars">★★★★★</div><h4>Amine Aouni</h4></div></div>
                     </div>
                 </div>
 
@@ -112,15 +110,12 @@
                     <h2>Our Transformations</h2>
                     <p class="subtitle subtitle-dark">See the real, life-changing results our clients have achieved through dedication and our proven methods.</p>
                     <div class="transformation-scroller" data-animated="true">
-                        <!-- NOTE for optimal performance: The transformation images below are large.
-                             It is highly recommended to resize them to their display size (e.g., 400x400 pixels)
-                             and create multiple versions for use with the 'srcset' attribute for responsive images. -->
                         <div class="scroller-wrapper">
                             <div class="scroller-inner">
-                                {% for i in range(1, 35) %}<img src="{{ url_for('static', filename='images/transformations/transformation-' ~ i ~ '.webp') }}" alt="Transformation {{ i }}" class="transformation-image" loading="lazy" decoding="async" width="400" height="400">{% endfor %}
+                                {% for i in range(1, 35) %}<img src="{{ url_for('static', filename='images/transformations/transformation-' ~ i ~ '.webp') }}" alt="Transformation {{ i }}" class="transformation-image" loading="lazy" decoding="async">{% endfor %}
                             </div>
                             <div class="scroller-inner" aria-hidden="true">
-                                {% for i in range(1, 35) %}<img src="{{ url_for('static', filename='images/transformations/transformation-' ~ i ~ '.webp') }}" alt="Transformation {{ i }}" class="transformation-image" loading="lazy" decoding="async" width="400" height="400">{% endfor %}
+                                {% for i in range(1, 35) %}<img src="{{ url_for('static', filename='images/transformations/transformation-' ~ i ~ '.webp') }}" alt="Transformation {{ i }}" class="transformation-image" loading="lazy" decoding="async">{% endfor %}
                             </div>
                         </div>
                     </div>                    
@@ -153,14 +148,11 @@
                     <p class="subtitle">Download the TGG Fit app and take your fitness journey with you. Access workouts, track progress, and stay connected with your coach.</p>
                 </div>
                 <div class="app-promo-video-container">
-                    <div class="app-promo-video-card" data-video-id="BjvwT-iELls"><img src="https://i.ytimg.com/vi/BjvwT-iELls/hqdefault.jpg" alt="Team Greek Gods App Promo" class="video-thumbnail" width="300" height="580" loading="lazy" decoding="async"><div class="play-icon"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="48" fill="rgba(255,255,255,0.9)" stroke-width="0"></circle><polygon points="40,30 70,50 40,70" fill="#0A0A0A"></polygon></svg></div></div>
+                    <div class="app-promo-video-card" data-video-id="BjvwT-iELls"><img src="https://i.ytimg.com/vi/BjvwT-iELls/hqdefault.jpg" alt="Team Greek Gods App Promo" class="video-thumbnail"><div class="play-icon"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="48" fill="rgba(255,255,255,0.9)" stroke-width="0"></circle><polygon points="40,30 70,50 40,70" fill="#0A0A0A"></polygon></svg></div></div>
                 </div>
                 <div class="app-buttons" style="display: flex; align-items: center; gap: 10px;">
-                    <!-- NOTE: The two images below are now served locally to improve caching.
-                         You must download the "Get it on Google Play" and "Download on the App Store" badges
-                         and save them as 'static/images/google-play-badge.png' and 'static/images/app-store-badge.svg' respectively. -->
-                    <a href="https://play.google.com/store/apps/details?id=io.hubfit.TGGFit" target="_blank" rel="noopener noreferrer"><img src="{{ url_for('static', filename='images/google-play-badge.png') }}" alt="Get it on Google Play" style="height:90px;" width="233" height="90" loading="lazy"></a>
-                    <a href="https://apps.apple.com/us/app/tgg-fit/id6476934242" target="_blank" rel="noopener noreferrer"><img src="{{ url_for('static', filename='images/app-store-badge.svg') }}" alt="Download on the App Store" style="height:60px;" width="180" height="60" loading="lazy"></a>
+                    <a href="https://play.google.com/store/apps/details?id=io.hubfit.TGGFit" target="_blank" rel="noopener noreferrer"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" style="height:90px;"></a>
+                    <a href="https://apps.apple.com/us/app/tgg-fit/id6476934242" target="_blank" rel="noopener noreferrer"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" style="height:60px;"></a>
                 </div>
             </div>
         </section>
@@ -179,7 +171,7 @@
                     <a href="{{ url_for('coach') }}" rel="noopener noreferrer" class="btn btn-dark">Know More About Coach</a>
                 </div>
                 <div class="about-image-wrapper">
-                    <img src="{{ url_for('static', filename='images/coach-image.webp') }}" alt="Coach Abdeslam Laraki in the gym" loading="lazy" decoding="async" width="460" height="550">
+                    <img src="{{ url_for('static', filename='images/coach-image.webp') }}" alt="Coach Abdeslam Laraki in the gym" loading="lazy" decoding="async">
                 </div>
             </div>
         </section>
@@ -187,11 +179,11 @@
         <!-- Press Logos Section -->
         <section class="press-section">
             <div class="container">
-                <h2 class="press-title">As Seen On</h2>
+                <h3 class="press-title">As Seen On</h3>
                 <div class="press-scroller" data-animated="true">
                     <div class="scroller-wrapper">
-                        <div class="scroller-inner">{% for i in range(1, 8) %}<img src="{{ url_for('static', filename='images/press/press-' ~ i ~ '.webp') }}" alt="Press Logo {{ i }}" class="press-logo" loading="lazy" decoding="async" height="45" width="150">{% endfor %}</div>
-                        <div class="scroller-inner" aria-hidden="true">{% for i in range(1, 8) %}<img src="{{ url_for('static', filename='images/press/press-' ~ i ~ '.webp') }}" alt="Press Logo {{ i }}" class="press-logo" loading="lazy" decoding="async" height="45" width="150">{% endfor %}</div>
+                        <div class="scroller-inner">{% for i in range(1, 8) %}<img src="{{ url_for('static', filename='images/press/press-' ~ i ~ '.webp') }}" alt="Press Logo {{ i }}" class="press-logo" loading="lazy" decoding="async">{% endfor %}</div>
+                        <div class="scroller-inner" aria-hidden="true">{% for i in range(1, 8) %}<img src="{{ url_for('static', filename='images/press/press-' ~ i ~ '.webp') }}" alt="Press Logo {{ i }}" class="press-logo" loading="lazy" decoding="async">{% endfor %}</div>
                     </div>
                 </div>
             </div>
