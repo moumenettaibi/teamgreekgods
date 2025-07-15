@@ -1402,6 +1402,27 @@ footer {
         top: 7px;     /* Adjust the wheel's position inside the smaller mouse */
         height: 6px;  /* Make the wheel smaller */
     }
+    /* Paste this inside your @media (max-width: 768px) block */
+
+/* --- RESPONSIVE CERTIFICATION STYLES --- */
+.certifications-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+}
+.cert-item {
+    aspect-ratio: 1.6 / 1;
+    padding: 1.25rem; /* Reduced padding for more space */
+}
+.cert-script-title {
+    font-size: 1.15rem; /* Was 1.3rem */
+}
+.cert-main-title {
+    font-size: 1.0rem; /* Was 1.2rem */
+    letter-spacing: 0.08em; /* Slightly tighter for smaller screens */
+}
+.cert-awarder {
+    font-size: 0.85rem; /* Was 0.9rem */
+}
 }
 
 /* --- Header Logo & Back Arrow Alignment --- */
