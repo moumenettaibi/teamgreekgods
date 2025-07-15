@@ -934,24 +934,6 @@ footer {
         8px 8px 30px rgba(0, 0, 0, 0.15);
 }
 
-@media (max-width: 1200px) {
-    .certifications-grid {
-        grid-template-columns: repeat(2, 1fr);
-        max-width: 900px;
-    }
-}
-
-@media (max-width: 768px) {
-    .certifications-grid {
-        grid-template-columns: 1fr;
-        max-width: 500px;
-    }
-    .cert-item {
-        aspect-ratio: 1.6 / 1;
-        padding: 1.5rem;
-    }
-}
-
 .cert-content {
     width: 100%;
     display: flex;
@@ -968,7 +950,6 @@ footer {
     font-size: 1.1rem;
     line-height: 1.1;
     color: #8c734b;
-    /* Remove bottom margin to let flexbox handle all spacing */
     margin-bottom: 0; 
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
@@ -982,9 +963,8 @@ footer {
     color: #1a2b45;
     line-height: 1.2;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-    /* This is the first half of the magic: it pushes down from the top element */
     margin-top: auto; 
-    margin-bottom: 0; /* Reset bottom margin */
+    margin-bottom: 0; 
 }
 
 .cert-awarder {
@@ -993,9 +973,7 @@ footer {
     font-size: 1rem;
     line-height: 1.6;
     color: #6e5f45;
-    /* This is the second half: it pushes down from the middle element */
     margin-top: auto;
-    /* Remove padding to ensure pure centering */
     padding-top: 0;
 }
 
@@ -1184,11 +1162,6 @@ footer {
     align-items: center;
     justify-content: center;
 }
-.modal-content .play-pause-btn svg {
-    width: 45px;
-    height: 45px;
-}
-
 .modal-content.paused .play-pause-btn {
     opacity: 1;
 }
@@ -1262,6 +1235,11 @@ footer {
 
 /* --- Responsive Design --- */
 @media (max-width: 1200px) {
+    /* Responsive Certifications Layout: 2 Columns on Tablet */
+    .certifications-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 900px;
+    }
     .testimonials-grid {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     }
@@ -1356,9 +1334,6 @@ footer {
         flex-direction: column;
         align-items: center;
     }
-    .certifications-grid {
-        grid-template-columns: 1fr;
-    }
     .playlist-item {
         flex: 0 0 150px;
     }
@@ -1388,26 +1363,25 @@ footer {
         width: 35px;
         height: 35px;
     }
-    .cert-item {
-        padding: 2rem;
-        min-height: 280px;
+    
+    /* --- RESPONSIVE CERTIFICATION STYLES --- */
+    .certifications-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
     }
+    .cert-item {
+        aspect-ratio: 1.6 / 1;
+        padding: 1.5rem;
+    }
+    /* Increase font sizes for better readability on mobile */
     .cert-script-title {
-        font-size: 2rem;
+        font-size: 1.3rem; 
     }
     .cert-main-title {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
     .cert-awarder {
-        font-size: 1rem;
-    }
-    .cert-seal {
-        width: 70px;
-        height: 70px;
-    }
-    .cert-seal svg {
-        width: 40px;
-        height: 40px;
+        font-size: 0.9rem;
     }
 }
 
