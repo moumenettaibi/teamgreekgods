@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.min.css', v=cache_buster) }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=EB+Garamond:wght@500;700&family=Pinyon+Script&family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=EB+Garamond:wght@500;700&family=Pinyon+Script&family=Cinzel+Decorative:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=EB+Garamond:wght@500;700&family=Pinyon+Script&family=Cinzel+Decorative:wght@400;700&display=swap"></noscript>
     <link rel="icon" href="{{ url_for('static', filename='images/tgg-logo.png') }}" type="image/x-icon">
 
 </head>
@@ -227,7 +228,7 @@
                     <div class="cert-item">
                         <div class="cert-content">
                             <span class="cert-script-title">Federation Accredited</span>
-                            <h4 class="cert-main-title">National Bodybuilding Coach</h4>
+                            <h3 class="cert-main-title">National Bodybuilding Coach</h4>
                             <p class="cert-awarder">Awarded by<br><strong>Fédération Royale Marocaine de Bodybuilding</strong></p>
                         </div>
                     </div>
@@ -285,7 +286,7 @@
             </div>
             <div class="footer-links-wrapper">
                 <div class="footer-links">
-                    <h4>Contact</h4>
+                    <h3 style="margin-bottom: 1rem;">Contact</h3>
                     <ul>
                         <li><a href="mailto:contact@teamgreekgods.ma" target="_blank" rel="noopener noreferrer"><svg
                                     style="color: white;" width="16" height="16" viewBox="0 0 24 24" fill="none"
