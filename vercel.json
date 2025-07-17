@@ -4,6 +4,12 @@
       { "src": "main.py", "use": "@vercel/python" }
     ],
     "routes": [
+        {
+            "source": "/static/(.*)",
+            "headers": {
+                "Cache-Control": "public, max-age=31536000, immutable"
+            }
+        },
       { "src": "/(.*)", "dest": "main.py" }
     ]
   }
