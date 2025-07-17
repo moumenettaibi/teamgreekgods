@@ -999,9 +999,10 @@
     </footer>
 
     <!-- Video Modal -->
-    <div class="video-modal" id="story-modal">
+    <div class="video-modal" id="story-modal" style="opacity: 0; visibility: hidden; pointer-events: none;">
         <div class="modal-content" id="story-modal-content"></div>
-        <button class="modal-close" id="modal-close-btn" aria-label="Close video">
+        <button class="modal-close" id="modal-close-btn" aria-label="Close video"
+            style="opacity: 0; visibility: hidden;">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -1048,6 +1049,14 @@
                     iframe.classList.add('youtube-iframe');
                     storyModalContent.innerHTML = '';
                     storyModalContent.appendChild(iframe);
+
+                    // Override inline styles and show modal
+                    storyModal.style.opacity = '1';
+                    storyModal.style.visibility = 'visible';
+                    storyModal.style.pointerEvents = 'auto';
+                    closeModalBtn.style.opacity = '1';
+                    closeModalBtn.style.visibility = 'visible';
+
                     storyModal.classList.add('active');
                     body.classList.add('modal-open');
                 };
@@ -1055,6 +1064,13 @@
                     storyModal.classList.remove('active');
                     body.classList.remove('modal-open');
                     storyModalContent.innerHTML = '';
+
+                    // Hide modal elements by restoring inline styles
+                    storyModal.style.opacity = '0';
+                    storyModal.style.visibility = 'hidden';
+                    storyModal.style.pointerEvents = 'none';
+                    closeModalBtn.style.opacity = '0';
+                    closeModalBtn.style.visibility = 'hidden';
                 };
                 watchStoryBtn.addEventListener('click', openModal);
                 closeModalBtn.addEventListener('click', closeModal);
