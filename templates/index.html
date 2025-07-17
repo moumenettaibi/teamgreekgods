@@ -112,10 +112,10 @@
                     <div class="transformation-scroller" data-animated="true">
                         <div class="scroller-wrapper">
                             <div class="scroller-inner">
-                                {% for i in range(1, 35) %}<img src="{{ url_for('static', filename='images/transformations/transformation-' ~ i ~ '.webp') }}" alt="Transformation {{ i }}" class="transformation-image" loading="lazy" decoding="async">{% endfor %}
+                                {% for i in range(1, 35) %}<img src="{{ url_for('static', filename='images/transformations/transformation-' ~ i ~ '.webp') }}" alt="Transformation {{ i }}" class="transformation-image" loading="lazy" decoding="async" width="400" height="400">{% endfor %}
                             </div>
                             <div class="scroller-inner" aria-hidden="true">
-                                {% for i in range(1, 35) %}<img src="{{ url_for('static', filename='images/transformations/transformation-' ~ i ~ '.webp') }}" alt="Transformation {{ i }}" class="transformation-image" loading="lazy" decoding="async">{% endfor %}
+                                {% for i in range(1, 35) %}<img src="{{ url_for('static', filename='images/transformations/transformation-' ~ i ~ '.webp') }}" alt="Transformation {{ i }}" class="transformation-image" loading="lazy" decoding="async" width="400" height="400">{% endfor %}
                             </div>
                         </div>
                     </div>                    
@@ -151,7 +151,7 @@
                     <div class="app-promo-video-card" data-video-id="BjvwT-iELls"><img src="{{ url_for('static', filename='images/thumbnails/BjvwT-iELls.webp') }}" alt="Team Greek Gods App Promo" class="video-thumbnail"><div class="play-icon"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="48" fill="rgba(255,255,255,0.9)" stroke-width="0"></circle><polygon points="40,30 70,50 40,70" fill="#0A0A0A"></polygon></svg></div></div>
                 </div>
                 <div class="app-buttons" style="display: flex; align-items: center; gap: 10px;">
-                    <a href="https://play.google.com/store/apps/details?id=io.hubfit.TGGFit" target="_blank" rel="noopener noreferrer"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" style="height:80px;"></a>
+                    <a href="https://play.google.com/store/apps/details?id=io.hubfit.TGGFit" target="_blank" rel="noopener noreferrer"><img src="{{ url_for('static', filename='images/en_badge_web_generic.png') }}" alt="Get it on Google Play" style="height:80px;" width="207" height="80"></a>
                     <a href="https://apps.apple.com/us/app/tgg-fit/id6476934242" target="_blank" rel="noopener noreferrer"><img src="{{ url_for('static', filename='images/download-on-the-app-store.svg') }}" alt="Download on the App Store" style="height:60px;"></a>
                 </div>
             </div>
@@ -182,8 +182,8 @@
                 <h3 class="press-title">As Seen On</h3>
                 <div class="press-scroller" data-animated="true">
                     <div class="scroller-wrapper">
-                        <div class="scroller-inner">{% for i in range(1, 8) %}<img src="{{ url_for('static', filename='images/press/press-' ~ i ~ '.webp') }}" alt="Press Logo {{ i }}" class="press-logo" loading="lazy" decoding="async">{% endfor %}</div>
-                        <div class="scroller-inner" aria-hidden="true">{% for i in range(1, 8) %}<img src="{{ url_for('static', filename='images/press/press-' ~ i ~ '.webp') }}" alt="Press Logo {{ i }}" class="press-logo" loading="lazy" decoding="async">{% endfor %}</div>
+                        <div class="scroller-inner">{% for i in range(1, 8) %}<img src="{{ url_for('static', filename='images/press/press-' ~ i ~ '.webp') }}" alt="Press Logo {{ i }}" class="press-logo" loading="lazy" decoding="async" width="200" height="80">{% endfor %}</div>
+                        <div class="scroller-inner" aria-hidden="true">{% for i in range(1, 8) %}<img src="{{ url_for('static', filename='images/press/press-' ~ i ~ '.webp') }}" alt="Press Logo {{ i }}" class="press-logo" loading="lazy" decoding="async" width="200" height="80">{% endfor %}</div>
                     </div>
                 </div>
             </div>

@@ -49,7 +49,7 @@ Talisman(app, content_security_policy=csp, force_https=False)
 # ==================== Cache Busting ====================
 # Set a long cache time for static files in production
 if not app.debug:
-    app.config['SEND_FILE_MAX_AGE_DEFAULT'] = datetime.timedelta(days=30)
+    app.config['SEND_FILE_MAX_AGE_DEFAULT'] = datetime.timedelta(days=1220)
 
 # This function creates a 'cache_buster' variable with the current time
 # and makes it available to all templates.
