@@ -77,6 +77,6 @@ def faq():
 # ==================== Startup ====================
 # This block is for local development only.
 # For production, a WSGI server like Gunicorn should be used.
-# Example: gunicorn --bind 0.0.0.0:8000 main:app
+# Example: gunicorn --config gunicorn_config.py main:app
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=4343, debug=True)
