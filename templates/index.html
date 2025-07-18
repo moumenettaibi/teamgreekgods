@@ -38,7 +38,7 @@
             --border-color-light: #EAEAEA;
             --border-color-dark: #2a2a2a;
             --accent-color: #f5c518;
-            --font-family: 'Inter', sans-serif;
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.07), 0 4px 6px -4px rgb(0 0 0 / 0.07)
         }
 
@@ -84,7 +84,8 @@
 
         h1 {
             font-size: clamp(3rem, 6vw, 4.5rem);
-            font-weight: 800
+            font-weight: 800;
+            font-display: swap
         }
 
         h2 {
@@ -622,19 +623,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+    <!-- Critical font loading - load Inter 800 weight synchronously for h1 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap">
+
+    <!-- Load remaining font weights asynchronously -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    </noscript>
+
     <!-- Load non-critical CSS asynchronously -->
     <link rel="preload" href="{{ url_for('static', filename='css/style.min.css', v=cache_buster) }}" as="style"
         onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.min.css', v=cache_buster) }}">
-    </noscript>
-
-    <!-- Load fonts asynchronously -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-        as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-        <link rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
     </noscript>
     <link rel="icon" href="{{ url_for('static', filename='images/tgg-logo.png') }}" type="image/x-icon">
 </head>
