@@ -1158,10 +1158,8 @@
             // Show play icons smoothly after page loads
             setTimeout(() => {
                 const playIcons = document.querySelectorAll('.play-icon');
-                playIcons.forEach((icon, index) => {
-                    setTimeout(() => {
-                        icon.classList.add('show');
-                    }, index * 100); // Stagger the animations
+                playIcons.forEach(icon => {
+                    icon.classList.add('show');
                 });
             }, 600);
 
