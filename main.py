@@ -15,7 +15,7 @@ csp = {
     'style-src': [
         "'self'",
         "https://fonts.googleapis.com",
-        "'unsafe-inline'"  # Required for inline styles in coach.html
+        "'unsafe-inline'"  # Required for inline styles
     ],
     'font-src': [
         "'self'",
@@ -30,7 +30,7 @@ csp = {
     ],
     'script-src': [
         "'self'",
-        "'unsafe-inline'"  # Required for inline scripts in coach.html
+        "'unsafe-inline'"  # Required for inline scripts
     ],
     'frame-src': [
         "'self'",
@@ -73,6 +73,11 @@ def coach():
 def faq():
     """Renders the FAQ page."""
     return render_template('faq.html')
+
+@app.route('/calculator')
+def calculator():
+    """Renders the fitness calculator page."""
+    return render_template('calculator.html')
 
 # ==================== Startup ====================
 # This block is for local development only.

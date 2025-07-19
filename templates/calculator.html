@@ -1,0 +1,464 @@
+<!-- templates/calculator.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goal Calculator - TeamGreekGods</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.min.css', v=cache_buster) }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
+    <link rel="icon" href="{{ url_for('static', filename='images/tgg-logo.png') }}" type="image/x-icon">
+</head>
+<body>
+
+    <!-- ==================== Header ==================== -->
+    <header>
+        <div class="container header-container">
+            <div class="logo-container">
+                <a href="{{ url_for('home') }}" class="back-link" aria-label="Go back to homepage">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 12H5"></path>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </a>
+                <a href="{{ url_for('home') }}" class="logo">
+                    <img src="{{ url_for('static', filename='images/tgg-logo.png') }}" alt="Team Greek Gods Logo" width="40" height="40">
+                    <span>TEAMGREEKGODS</span>
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Calculator</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="https://wa.me/212705185468" target="_blank" rel="noopener noreferrer" class="btn btn-dark">Join Now</a>
+                <button class="mobile-nav-toggle" aria-label="Toggle mobile menu">
+                    <svg class="icon-open" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="4" y1="6" x2="16" y2="6"></line>
+                        <line x1="4" y1="12" x2="20" y2="12"></line>
+                        <line x1="4" y1="18" x2="12" y2="18"></line>
+                      </svg>
+                    <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 6L6 18"></path>
+                        <path d="M6 6l12 12"></path>
+                      </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== Mobile Navigation ==================== -->
+    <div class="mobile-nav">
+        <nav>
+            <ul>
+                <li><a href="#">Calculator</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="https://wa.me/212705185468" target="_blank" rel="noopener noreferrer" style="color: #f5c518;">Join Now</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main>
+        <!-- ==================== Calculator Section ==================== -->
+        <section class="calculator-section">
+            <div class="container">
+                <div class="calculator-header">
+                    <h1>Your Fitness Timeline</h1>
+                    <p class="subtitle subtitle-dark">
+                        Chart your path to success. Our smart calculator provides a realistic timeline and expert advice.
+                    </p>
+                </div>
+
+                <div class="calculator-wrapper">
+                    <form id="fitness-calculator" class="calculator-form" novalidate>
+                        <div class="form-row toggle-row">
+                            <div class="toggle-group">
+                                <label class="toggle-label">Unit</label>
+                                <div class="toggle-buttons">
+                                    <button type="button" class="toggle-btn active" data-unit="kg">Kilograms (kg)</button>
+                                    <button type="button" class="toggle-btn" data-unit="lbs">Pounds (lbs)</button>
+                                </div>
+                            </div>
+                            <div class="toggle-group">
+                                <label class="toggle-label">Goal</label>
+                                <div class="toggle-buttons">
+                                    <button type="button" class="toggle-btn active" data-goal="loss">Lose Weight</button>
+                                    <button type="button" class="toggle-btn" data-goal="gain">Gain Muscle</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row input-row">
+                            <div class="form-group">
+                                <label for="current-weight">Current Weight (<span class="unit-label">kg</span>)</label>
+                                <!-- FIX: Added step="0.1" to allow decimals -->
+                                <input type="number" id="current-weight" placeholder="e.g., 80" step="0.1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="goal-weight">Goal Weight (<span class="unit-label">kg</span>)</label>
+                                <!-- FIX: Added step="0.1" to allow decimals -->
+                                <input type="number" id="goal-weight" placeholder="e.g., 70" step="0.1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="weekly-target">Weekly Target (<span class="unit-label">kg</span>/week)</label>
+                                <input type="number" id="weekly-target" step="0.1" placeholder="Enter target rate" required>
+                                <p class="input-suggestion" id="target-suggestion"></p>
+                            </div>
+                        </div>
+
+                        <div class="form-row button-row">
+                            <button type="submit" class="btn btn-dark">Calculate</button>
+                        </div>
+                    </form>
+
+                    <div id="result-container" class="result-container">
+                        <div class="result-icon" id="result-icon-container"></div>
+                        <div class="result-details">
+                            <h3>Your Goal Timeline</h3>
+                            <p id="result-text"></p>
+                            <p id="result-date"></p>
+                            <p id="result-feedback" class="result-feedback"></p>
+                        </div>
+                        <div class="result-cta">
+                            <p>Ready to make it happen with expert guidance?</p>
+                            <a href="https://wa.me/212705185468" target="_blank" rel="noopener noreferrer" class="btn btn-cta">Get Your Personalized Plan</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==================== Suggestion Modal ==================== -->
+    <div class="modal-overlay" id="suggestion-modal-overlay">
+        <div class="modal-content">
+            <div class="modal-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            </div>
+            <h3>Goal Mismatch Detected</h3>
+            <p id="modal-message"></p>
+            <div class="modal-actions">
+                <button class="btn btn-dark" id="modal-confirm-btn">Yes, Switch Goal</button>
+                <button class="btn btn-secondary" id="modal-cancel-btn">No, I'll Correct It</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ==================== Footer ==================== -->
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container footer-container">
+            <div class="footer-about"><a href="{{ url_for('home') }}" class="logo footer-logo"><img
+                        src="{{ url_for('static', filename='images/tgg-logo.png') }}" alt="Team Greek Gods Logo"
+                        width="40" height="40"><span style="color: white;">TEAMGREEKGODS</span></a>
+                <p>Follow Us On Social Media</p>
+                <div class="socials"><a href="https://www.instagram.com/teamgreekgods/" target="_blank"
+                        rel="noopener noreferrer" aria-label="Instagram"><svg style="color: white;" width="24"
+                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg></a><a href="https://www.facebook.com/profile.php?id=100083533650189" target="_blank"
+                        rel="noopener noreferrer" aria-label="Facebook"><svg style="color: white;" width="24"
+                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg></a><a href="https://x.com/LarakiAbs" target="_blank" rel="noopener noreferrer"
+                        aria-label="Twitter"><svg style="color: white;" xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" fill="currentColor" viewBox="0 0 16 16">
+                            <path
+                                d="M9.5,6.8l5.8-6.2h-1.4l-5,5.4l-4-5.4H0l6.2,8.2L0,15.5h1.4l5.4-5.9l4.4,5.9H16L9.5,6.8z M2.1,1.6h2.2l9.7,12.9h-2.2L2.1,1.6z" />
+                        </svg></a><a href="https://www.youtube.com/@AbdeslamLaraki" target="_blank"
+                        rel="noopener noreferrer" aria-label="YouTube"><svg style="color: white;" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M22.54 6.42a1.64 1.64 0 0 0-1.16-1.16C19.95 4.5 12 4.5 12 4.5s-7.95 0-9.38.76a1.64 1.64 0 0 0-1.16 1.16C.7 7.85 0 12 0 12s.7 4.15 1.46 5.58a1.64 1.64 0 0 0 1.16 1.16c1.43.76 9.38.76 9.38.76s7.95 0 9.38-.76a1.64 1.64 0 0 0 1.16-1.16c.76-1.43 1.46-5.58 1.46-5.58s-.7-4.15-1.46-5.58z">
+                            </path>
+                            <polygon points="9.5 15.5 15.5 12 9.5 8.5 9.5 15.5"></polygon>
+                        </svg></a></div>
+            </div>
+            <div class="footer-links-wrapper">
+                <div class="footer-links">
+                    <h3 style="color: white; margin-bottom: 1rem;">Contact</h3>
+                    <ul>
+                        <li><a href="mailto:contact@teamgreekgods.ma" target="_blank" rel="noopener noreferrer"><svg
+                                    style="color: white;" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                    </path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg> contact@teamgreekgods.ma</a></li>
+                        <li><a href="https://wa.me/212705185468" target="_blank" rel="noopener noreferrer"><svg
+                                    style="color: white;" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+                                    <path
+                                        d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" />
+                                </svg> +212 705-185468</a></li>
+                        <li><span><svg style="color: white;" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg> Morocco</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 <span style="color: white;">TeamGreekGods</span>. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- SCRIPT IS BELOW -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Mobile Nav Logic (no changes) ---
+            const body = document.querySelector('body');
+            const navToggle = document.querySelector('.mobile-nav-toggle');
+            const mobileNav = document.querySelector('.mobile-nav');
+            if (navToggle) {
+                navToggle.addEventListener('click', () => {
+                    navToggle.classList.toggle('active');
+                    mobileNav.classList.toggle('open');
+                    body.classList.toggle('mobile-nav-open');
+                });
+            }
+            document.querySelectorAll('.mobile-nav a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navToggle && mobileNav) {
+                        navToggle.classList.remove('active');
+                        mobileNav.classList.remove('open');
+                        body.classList.remove('mobile-nav-open');
+                    }
+                });
+            });
+    
+            // --- Even Smarter Calculator Logic ---
+            const calculatorForm = document.getElementById('fitness-calculator');
+            const resultContainer = document.getElementById('result-container');
+            const currentWeightInput = document.getElementById('current-weight');
+            const goalWeightInput = document.getElementById('goal-weight');
+            const weeklyTargetInput = document.getElementById('weekly-target');
+            const targetSuggestion = document.getElementById('target-suggestion');
+            let currentUnit = 'kg';
+            let currentGoal = 'loss';
+            let intendedGoal = null;
+    
+            const KG_TO_LBS = 2.20462;
+            const LBS_TO_KG = 0.453592;
+    
+            // --- Modal Elements & Logic ---
+            const modalOverlay = document.getElementById('suggestion-modal-overlay');
+            const modalMessage = document.getElementById('modal-message');
+            const modalConfirmBtn = document.getElementById('modal-confirm-btn');
+            const modalCancelBtn = document.getElementById('modal-cancel-btn');
+    
+            const showModal = (message, newGoal) => {
+                modalMessage.textContent = message;
+                intendedGoal = newGoal;
+                modalOverlay.classList.add('visible');
+                body.classList.add('modal-open');
+            };
+    
+            const hideModal = () => {
+                modalOverlay.classList.remove('visible');
+                body.classList.remove('modal-open');
+            };
+    
+            modalConfirmBtn.addEventListener('click', () => {
+                const goalToggleToActivate = document.querySelector(`.toggle-btn[data-goal="${intendedGoal}"]`);
+                if (goalToggleToActivate) {
+                    goalToggleToActivate.click();
+                }
+                hideModal();
+                calculatorForm.requestSubmit();
+            });
+    
+            modalCancelBtn.addEventListener('click', hideModal);
+            modalOverlay.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) {
+                    hideModal();
+                }
+            });
+    
+            // --- Main Calculator Functions ---
+            const runCalculation = () => {
+                const currentWeight = parseFloat(currentWeightInput.value);
+                const goalWeight = parseFloat(goalWeightInput.value);
+                const weeklyTarget = parseFloat(weeklyTargetInput.value);
+    
+                if (isNaN(currentWeight) || isNaN(goalWeight) || isNaN(weeklyTarget) || weeklyTarget <= 0) {
+                    showError("Your journey starts with clear numbers. Please fill all fields correctly.");
+                    return;
+                }
+    
+                const weightDifference = Math.abs(currentWeight - goalWeight);
+                const weeks = weightDifference / weeklyTarget;
+                
+                let timelineMessage;
+                if (weeks < 1) {
+                    timelineMessage = "Victory is just days away!";
+                } else if (weeks <= 8) {
+                    timelineMessage = `In just ${Math.ceil(weeks)} weeks, you'll reach your new reality.`;
+                } else if (weeks <= 52) {
+                    timelineMessage = `Your dedication will pay off in only ${Math.ceil(weeks)} weeks.`;
+                } else {
+                    const years = Math.floor(weeks / 52);
+                    const remainingWeeks = Math.ceil(weeks % 52);
+                    timelineMessage = `A legacy is built over time. Your goal is ~${years} year(s) and ${remainingWeeks} weeks away.`
+                }
+    
+                const now = new Date();
+                now.setDate(now.getDate() + (weeks * 7));
+                const targetDateString = now.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+    
+                showResult({
+                    timeline: timelineMessage,
+                    // *** CHANGE: Added <br> tag for a new line ***
+                    targetDate: `Your victory date is set:<br>${targetDateString}`,
+                    feedback: getFeedback(weeklyTarget, currentUnit, currentGoal),
+                    icon: getIcon(currentGoal)
+                });
+            };
+    
+            calculatorForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const currentWeight = parseFloat(currentWeightInput.value);
+                const goalWeight = parseFloat(goalWeightInput.value);
+    
+                if (isNaN(currentWeight) || isNaN(goalWeight)) {
+                    showError("Please enter valid numbers for weight.");
+                    return;
+                }
+    
+                if (currentGoal === 'loss' && currentWeight <= goalWeight) {
+                    showModal("Your goal weight is higher than your current weight. To build your physique, did you mean to 'Gain Muscle'?", 'gain');
+                    return;
+                }
+    
+                if (currentGoal === 'gain' && currentWeight >= goalWeight) {
+                    showModal("Your goal weight is lower than your current weight. To reveal your definition, did you mean to 'Lose Weight'?", 'loss');
+                    return;
+                }
+    
+                runCalculation();
+            });
+    
+            // --- UI Update Functions ---
+            const hideResult = () => resultContainer.classList.remove('visible');
+    
+            const showError = (message) => {
+                // *** CHANGE: Use .innerHTML to be consistent ***
+                document.getElementById('result-feedback').innerHTML = message;
+                document.getElementById('result-text').innerHTML = "Awaiting Orders";
+                document.getElementById('result-date').innerHTML = "Plot your course to greatness.";
+                document.getElementById('result-icon-container').innerHTML = getIcon('error');
+                resultContainer.classList.add('visible');
+            };
+    
+            const showResult = (data) => {
+                document.getElementById('result-icon-container').innerHTML = data.icon;
+                document.getElementById('result-text').textContent = data.timeline;
+                // *** CHANGE: Use .innerHTML to render the <br> tag ***
+                document.getElementById('result-date').innerHTML = data.targetDate;
+                document.getElementById('result-feedback').textContent = data.feedback;
+                resultContainer.classList.add('visible');
+            };
+    
+            const getFeedback = (target, unit, goal) => {
+                const targetInKg = unit === 'lbs' ? target * LBS_TO_KG : target;
+                if (goal === 'loss') {
+                    if (targetInKg > 1.2) return 'A warrior\'s pace! This high-speed transformation requires iron discipline. We\'ll guide you to do it right.';
+                    if (targetInKg >= 0.5) return 'The champion\'s path. This sustainable rate is the secret to sculpting a physique that lasts. Excellent choice.';
+                    return 'A strategic approach. You\'re building a solid foundation for a permanent transformation. Consistency is your superpower.';
+                } else { // goal === 'gain'
+                    if (targetInKg > 0.6) return 'You\'re on a mission to build! This rapid pace demands serious fuel and recovery. Let\'s ensure every pound is quality muscle.';
+                    if (targetInKg >= 0.25) return 'The perfect blueprint for a Greek God. You\'re in the sweet spot for building impressive, lean muscle.';
+                    return 'The craftsman\'s method. You\'re focused on sculpting a masterpiece with precision, prioritizing quality over speed.';
+                }
+            };
+    
+            const getIcon = (goal) => {
+                if (goal === 'error') return `<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>`;
+                if (goal === 'loss') {
+                    return `<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.45 1-1 1H5c-.55 0-1-.45-1-1v-2.34"></path><path d="M15 14.66V17c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-2.34"></path><path d="M8.5 12L12 2l3.5 10"></path></svg>`;
+                } else { // gain
+                    return `<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>`;
+                }
+            };
+    
+            // --- Setup Event Listeners ---
+            const updateTargetSuggestion = () => {
+                if (currentGoal === 'loss') {
+                    const range = (currentUnit === 'kg') ? '0.5 - 1 kg/week' : '1 - 2 lbs/week';
+                    targetSuggestion.textContent = `Recommended: ${range}`;
+                } else if (currentGoal === 'gain') {
+                    const range = (currentUnit === 'kg') ? '0.25 - 0.5 kg/week' : '0.5 - 1 lbs/week';
+                    targetSuggestion.textContent = `Recommended: ${range}`;
+                }
+            };
+    
+            const unitToggles = document.querySelectorAll('.toggle-btn[data-unit]');
+            const goalToggles = document.querySelectorAll('.toggle-btn[data-goal]');
+    
+            const convertUnits = (newUnit) => {
+                const inputsToConvert = [currentWeightInput, goalWeightInput, weeklyTargetInput];
+                const conversionRate = newUnit === 'lbs' ? KG_TO_LBS : LBS_TO_KG;
+    
+                inputsToConvert.forEach(input => {
+                    const value = parseFloat(input.value);
+                    if (!isNaN(value)) {
+                        input.value = (value * conversionRate).toFixed(1);
+                    }
+                });
+            };
+    
+            unitToggles.forEach(toggle => {
+                toggle.addEventListener('click', (e) => {
+                    const newUnit = e.target.dataset.unit;
+                    if (newUnit === currentUnit) return; 
+    
+                    convertUnits(newUnit);
+    
+                    currentUnit = newUnit; 
+                    unitToggles.forEach(t => t.classList.remove('active'));
+                    e.target.classList.add('active');
+                    document.querySelectorAll('.unit-label').forEach(label => label.textContent = currentUnit);
+                    updateTargetSuggestion();
+                    hideResult();
+                });
+            });
+    
+            goalToggles.forEach(toggle => {
+                toggle.addEventListener('click', (e) => {
+                    currentGoal = e.target.dataset.goal;
+                    goalToggles.forEach(t => t.classList.remove('active'));
+                    e.target.classList.add('active');
+                    updateTargetSuggestion();
+                    hideResult();
+                });
+            });
+    
+            [currentWeightInput, goalWeightInput, weeklyTargetInput].forEach(input => {
+                input.addEventListener('input', hideResult);
+            });
+    
+            // --- Initialize Page ---
+            updateTargetSuggestion();
+        });
+    </script>
+</body>
+</html>
