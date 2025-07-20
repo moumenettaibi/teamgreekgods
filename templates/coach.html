@@ -2059,11 +2059,16 @@
             <div class="container">
                 <h2 style="text-align: center; margin-bottom: 60px;">Who Is Abdeslam Laraki?</h2>
 
-                <!-- Main Video Player with Lazy Loading Facade -->
+                <!-- Main Video Player with Optimized Lazy Loading Facade -->
                 <div class="main-video-player">
                     <div id="youtube-facade" class="youtube-facade" data-video-id="MuEC7iZoh0A">
-                        <img src="https://i.ytimg.com/vi/MuEC7iZoh0A/maxresdefault.jpg" alt="The TGG Story"
-                            loading="lazy">
+                        <!-- Optimized placeholder with WebP support -->
+                        <picture>
+                            <source srcset="https://i.ytimg.com/vi_webp/MuEC7iZoh0A/maxresdefault.webp"
+                                type="image/webp">
+                            <img src="https://i.ytimg.com/vi/MuEC7iZoh0A/maxresdefault.jpg" alt="The TGG Story"
+                                loading="lazy" decoding="async" fetchpriority="high">
+                        </picture>
                         <button class="play-button" aria-label="Play video">
                             <svg width="68" height="48" viewBox="0 0 68 48">
                                 <path
@@ -2078,41 +2083,61 @@
                     </div>
                 </div>
 
-                <!-- Scrollable Thumbnail List -->
+                <!-- Scrollable Thumbnail List with Optimized Images -->
                 <div class="video-thumbnail-list">
                     <div class="thumbnail-scroll-container">
                         <div class="playlist-item active" data-video-id="MuEC7iZoh0A" data-title="The TGG Story">
                             <div class="thumbnail-wrapper">
-                                <img src="https://i.ytimg.com/vi/MuEC7iZoh0A/hqdefault.jpg" alt="Video Thumbnail"
-                                    loading="lazy">
+                                <picture>
+                                    <source srcset="https://i.ytimg.com/vi_webp/MuEC7iZoh0A/hqdefault.webp"
+                                        type="image/webp">
+                                    <img src="https://i.ytimg.com/vi/MuEC7iZoh0A/hqdefault.jpg"
+                                        alt="The TGG Story thumbnail" loading="lazy" decoding="async">
+                                </picture>
                             </div>
                             <span class="video-title">The TGG Story</span>
                         </div>
                         <div class="playlist-item" data-video-id="ezXdKNMYod4" data-title="Client Success">
                             <div class="thumbnail-wrapper">
-                                <img src="https://i.ytimg.com/vi/ezXdKNMYod4/hqdefault.jpg" alt="Video Thumbnail"
-                                    loading="lazy">
+                                <picture>
+                                    <source srcset="https://i.ytimg.com/vi_webp/ezXdKNMYod4/hqdefault.webp"
+                                        type="image/webp">
+                                    <img src="https://i.ytimg.com/vi/ezXdKNMYod4/hqdefault.jpg"
+                                        alt="Client Success thumbnail" loading="lazy" decoding="async">
+                                </picture>
                             </div>
                             <span class="video-title">Client Success</span>
                         </div>
                         <div class="playlist-item" data-video-id="fs9_K0wbGUs" data-title="Training Philosophy">
                             <div class="thumbnail-wrapper">
-                                <img src="https://i.ytimg.com/vi/fs9_K0wbGUs/hqdefault.jpg" alt="Video Thumbnail"
-                                    loading="lazy">
+                                <picture>
+                                    <source srcset="https://i.ytimg.com/vi_webp/fs9_K0wbGUs/hqdefault.webp"
+                                        type="image/webp">
+                                    <img src="https://i.ytimg.com/vi/fs9_K0wbGUs/hqdefault.jpg"
+                                        alt="Training Philosophy thumbnail" loading="lazy" decoding="async">
+                                </picture>
                             </div>
                             <span class="video-title">Training Philosophy</span>
                         </div>
                         <div class="playlist-item" data-video-id="lMRlJagRQfM" data-title="A Day in the Life">
                             <div class="thumbnail-wrapper">
-                                <img src="https://i.ytimg.com/vi/lMRlJagRQfM/hqdefault.jpg" alt="Video Thumbnail"
-                                    loading="lazy">
+                                <picture>
+                                    <source srcset="https://i.ytimg.com/vi_webp/lMRlJagRQfM/hqdefault.webp"
+                                        type="image/webp">
+                                    <img src="https://i.ytimg.com/vi/lMRlJagRQfM/hqdefault.jpg"
+                                        alt="A Day in the Life thumbnail" loading="lazy" decoding="async">
+                                </picture>
                             </div>
                             <span class="video-title">A Day in the Life</span>
                         </div>
                         <div class="playlist-item" data-video-id="EvH8zlnTC1M" data-title="Nutrition Tips">
                             <div class="thumbnail-wrapper">
-                                <img src="https://i.ytimg.com/vi/EvH8zlnTC1M/hqdefault.jpg" alt="Video Thumbnail"
-                                    loading="lazy">
+                                <picture>
+                                    <source srcset="https://i.ytimg.com/vi_webp/EvH8zlnTC1M/hqdefault.webp"
+                                        type="image/webp">
+                                    <img src="https://i.ytimg.com/vi/EvH8zlnTC1M/hqdefault.jpg"
+                                        alt="Nutrition Tips thumbnail" loading="lazy" decoding="async">
+                                </picture>
                             </div>
                             <span class="video-title">Nutrition Tips</span>
                         </div>
