@@ -6,9 +6,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coach - TeamGreekGods</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.min.css', v=cache_buster) }}">
+    <!-- Critical CSS inline for above-the-fold content -->
+    <style>
+        /* Critical styles for initial render */
+        body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        header { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); }
+        .coach-hero { padding: 120px 0 80px; text-align: center; }
+        .coach-hero h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .subtitle { font-size: 1.2rem; color: #666; max-width: 600px; margin: 0 auto; }
+    </style>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="{{ url_for('static', filename='css/style.min.css', v=cache_buster) }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/style.min.css', v=cache_buster) }}"></noscript>
+    
+    <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.youtube.com">
+    <link rel="preconnect" href="https://i.ytimg.com">
+    
+    <!-- Load fonts asynchronously -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=EB+Garamond:wght@500;700&family=Pinyon+Script&family=Cinzel+Decorative:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=EB+Garamond:wght@500;700&family=Pinyon+Script&family=Cinzel+Decorative:wght@400;700&display=swap"></noscript>
     <link rel="icon" href="{{ url_for('static', filename='images/tgg-logo.png') }}" type="image/x-icon">
@@ -151,44 +170,52 @@
             <div class="container">
                 <h2 style="text-align: center; margin-bottom: 60px;">Who Is Abdeslam Laraki?</h2>
 
-                <!-- Main Video Player -->
+                <!-- Main Video Player with Lazy Loading Facade -->
                 <div class="main-video-player">
-                    <iframe id="youtube-playlist-player" src="https://www.youtube.com/embed/MuEC7iZoh0A?rel=0"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
+                    <div id="youtube-facade" class="youtube-facade" data-video-id="MuEC7iZoh0A">
+                        <img src="https://i.ytimg.com/vi/MuEC7iZoh0A/maxresdefault.jpg" alt="The TGG Story" loading="lazy">
+                        <button class="play-button" aria-label="Play video">
+                            <svg width="68" height="48" viewBox="0 0 68 48">
+                                <path d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#f00"></path>
+                                <path d="M 45,24 27,14 27,34" fill="#fff"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="youtube-player-container" style="display: none;">
+                        <!-- YouTube iframe will be inserted here when play button is clicked -->
+                    </div>
                 </div>
 
                 <!-- Scrollable Thumbnail List -->
                 <div class="video-thumbnail-list">
                     <div class="thumbnail-scroll-container">
-                        <div class="playlist-item active" data-video-id="MuEC7iZoh0A">
+                        <div class="playlist-item active" data-video-id="MuEC7iZoh0A" data-title="The TGG Story">
                             <div class="thumbnail-wrapper">
-                                <img src="https://i.ytimg.com/vi/MuEC7iZoh0A/hqdefault.jpg" alt="Video Thumbnail">
+                                <img src="https://i.ytimg.com/vi/MuEC7iZoh0A/hqdefault.jpg" alt="Video Thumbnail" loading="lazy">
                             </div>
                             <span class="video-title">The TGG Story</span>
                         </div>
-                        <div class="playlist-item" data-video-id="ezXdKNMYod4">
+                        <div class="playlist-item" data-video-id="ezXdKNMYod4" data-title="Client Success">
                             <div class="thumbnail-wrapper">
-                                <img src="https://i.ytimg.com/vi/ezXdKNMYod4/hqdefault.jpg" alt="Video Thumbnail">
+                                <img src="https://i.ytimg.com/vi/ezXdKNMYod4/hqdefault.jpg" alt="Video Thumbnail" loading="lazy">
                             </div>
                             <span class="video-title">Client Success</span>
                         </div>
-                        <div class="playlist-item" data-video-id="fs9_K0wbGUs">
+                        <div class="playlist-item" data-video-id="fs9_K0wbGUs" data-title="Training Philosophy">
                             <div class="thumbnail-wrapper">
-                                <img src="https://i.ytimg.com/vi/fs9_K0wbGUs/hqdefault.jpg" alt="Video Thumbnail">
+                                <img src="https://i.ytimg.com/vi/fs9_K0wbGUs/hqdefault.jpg" alt="Video Thumbnail" loading="lazy">
                             </div>
                             <span class="video-title">Training Philosophy</span>
                         </div>
-                        <div class="playlist-item" data-video-id="lMRlJagRQfM">
+                        <div class="playlist-item" data-video-id="lMRlJagRQfM" data-title="A Day in the Life">
                             <div class="thumbnail-wrapper">
-                                <img src="https://i.ytimg.com/vi/lMRlJagRQfM/hqdefault.jpg" alt="Video Thumbnail">
+                                <img src="https://i.ytimg.com/vi/lMRlJagRQfM/hqdefault.jpg" alt="Video Thumbnail" loading="lazy">
                             </div>
                             <span class="video-title">A Day in the Life</span>
                         </div>
-                        <div class="playlist-item" data-video-id="EvH8zlnTC1M">
+                        <div class="playlist-item" data-video-id="EvH8zlnTC1M" data-title="Nutrition Tips">
                             <div class="thumbnail-wrapper">
-                                <img src="https://i.ytimg.com/vi/EvH8zlnTC1M/hqdefault.jpg" alt="Video Thumbnail">
+                                <img src="https://i.ytimg.com/vi/EvH8zlnTC1M/hqdefault.jpg" alt="Video Thumbnail" loading="lazy">
                             </div>
                             <span class="video-title">Nutrition Tips</span>
                         </div>
@@ -319,6 +346,51 @@
     </footer>
 
 
+    <!-- Additional CSS for YouTube facade -->
+    <style>
+        .youtube-facade {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            background: #000;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        
+        .youtube-facade img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .play-button:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        #youtube-player-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Mobile navigation toggle
@@ -326,11 +398,13 @@
             const mobileNav = document.querySelector('.mobile-nav');
             const body = document.querySelector('body');
 
-            navToggle.addEventListener('click', function() {
-                navToggle.classList.toggle('active');
-                mobileNav.classList.toggle('open');
-                body.classList.toggle('mobile-nav-open');
-            });
+            if (navToggle) {
+                navToggle.addEventListener('click', function() {
+                    navToggle.classList.toggle('active');
+                    mobileNav.classList.toggle('open');
+                    body.classList.toggle('mobile-nav-open');
+                });
+            }
             
             const mobileLinks = document.querySelectorAll('.mobile-nav a');
             mobileLinks.forEach(link => {
@@ -341,20 +415,64 @@
                 });
             });
 
+            // YouTube Lazy Loading with Facade
+            const youtubeFacade = document.getElementById('youtube-facade');
+            const playerContainer = document.getElementById('youtube-player-container');
+            let isPlayerLoaded = false;
+
+            function loadYouTubePlayer(videoId) {
+                if (!isPlayerLoaded) {
+                    const iframe = document.createElement('iframe');
+                    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+                    iframe.frameBorder = '0';
+                    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+                    iframe.allowFullscreen = true;
+                    iframe.style.cssText = 'position: absolute; top: 0; left: 0; width: 100%; height: 100%;';
+                    
+                    playerContainer.appendChild(iframe);
+                    playerContainer.style.cssText = 'position: relative; width: 100%; height: 0; padding-bottom: 56.25%;';
+                    
+                    youtubeFacade.style.display = 'none';
+                    playerContainer.style.display = 'block';
+                    isPlayerLoaded = true;
+                }
+            }
+
+            // Handle facade click
+            if (youtubeFacade) {
+                youtubeFacade.addEventListener('click', function() {
+                    const videoId = this.dataset.videoId;
+                    loadYouTubePlayer(videoId);
+                });
+            }
+
             // Interactive Video Playlist
             const playlistItems = document.querySelectorAll('.playlist-item');
-            const playerIframe = document.getElementById('youtube-playlist-player');
             
             playlistItems.forEach(item => {
                 item.addEventListener('click', function() {
-                    // Get video ID from the clicked item
                     const videoId = this.dataset.videoId;
+                    const title = this.dataset.title;
                     
-                    // Update the iframe src to the new video and autoplay
-                    playerIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+                    if (isPlayerLoaded) {
+                        // Update existing iframe
+                        const iframe = playerContainer.querySelector('iframe');
+                        if (iframe) {
+                            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+                        }
+                    } else {
+                        // Update facade and load player
+                        const facadeImg = youtubeFacade.querySelector('img');
+                        if (facadeImg) {
+                            facadeImg.src = `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
+                            facadeImg.alt = title;
+                        }
+                        youtubeFacade.dataset.videoId = videoId;
+                        loadYouTubePlayer(videoId);
+                    }
                     
-                    // Update the 'active' class
-                    document.querySelector('.playlist-item.active').classList.remove('active');
+                    // Update active state
+                    document.querySelector('.playlist-item.active')?.classList.remove('active');
                     this.classList.add('active');
                 });
             });
