@@ -9,27 +9,290 @@
     <!-- Critical CSS inline for above-the-fold content -->
     <style>
         /* Critical styles for initial render */
-        body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        header { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); }
-        .coach-hero { padding: 120px 0 80px; text-align: center; }
-        .coach-hero h1 { font-size: 3rem; margin-bottom: 1rem; }
-        .subtitle { font-size: 1.2rem; color: #666; max-width: 600px; margin: 0 auto; }
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Critical Styles */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: #333;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #666;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+        }
+
+        .back-link:hover {
+            background: rgba(0, 0, 0, 0.05);
+            color: #333;
+        }
+
+        .back-link svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            stroke-width: 2;
+        }
+
+        header nav {
+            display: flex;
+        }
+
+        header nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 2rem;
+        }
+
+        header nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        header nav a:hover {
+            color: #f5c518;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-dark {
+            background: #333;
+            color: white;
+        }
+
+        .btn-dark:hover {
+            background: #f5c518;
+            transform: translateY(-2px);
+        }
+
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* Hero Section Critical Styles */
+        .coach-hero {
+            padding: 140px 0 100px;
+            text-align: center;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .coach-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(245, 197, 24, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .coach-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .coach-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin: 0 0 1.5rem 0;
+            color: #1a1a1a;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .subtitle-dark {
+            color: #555;
+            font-weight: 400;
+        }
+
+        /* Critical mobile navigation styles to prevent flash */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 999;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-nav.open {
+            transform: translateX(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-nav nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        .mobile-nav nav li {
+            margin: 2rem 0;
+        }
+
+        .mobile-nav nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .mobile-nav nav a:hover {
+            color: #f5c518;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            header nav {
+                display: none;
+            }
+
+            .mobile-nav-toggle {
+                display: block;
+            }
+
+            .coach-hero {
+                padding: 120px 0 80px;
+            }
+
+            .header-container {
+                padding: 0.75rem 20px;
+            }
+
+            .logo span {
+                font-size: 1rem;
+            }
+        }
+
+        /* Hide mobile nav on desktop */
+        @media (min-width: 769px) {
+            .mobile-nav {
+                display: none !important;
+            }
+        }
     </style>
-    
+
     <!-- Preload critical resources -->
-    <link rel="preload" href="{{ url_for('static', filename='css/style.min.css', v=cache_buster) }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{{ url_for('static', filename='css/style.min.css', v=cache_buster) }}"></noscript>
-    
+    <link rel="preload" href="{{ url_for('static', filename='css/style.min.css', v=cache_buster) }}" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.min.css', v=cache_buster) }}">
+    </noscript>
+
     <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://www.youtube.com">
     <link rel="preconnect" href="https://i.ytimg.com">
-    
+
     <!-- Load fonts asynchronously -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=EB+Garamond:wght@500;700&family=Pinyon+Script&family=Cinzel+Decorative:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=EB+Garamond:wght@500;700&family=Pinyon+Script&family=Cinzel+Decorative:wght@400;700&display=swap"></noscript>
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=EB+Garamond:wght@500;700&family=Pinyon+Script&family=Cinzel+Decorative:wght@400;700&display=swap"
+        as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=EB+Garamond:wght@500;700&family=Pinyon+Script&family=Cinzel+Decorative:wght@400;700&display=swap">
+    </noscript>
     <link rel="icon" href="{{ url_for('static', filename='images/tgg-logo.png') }}" type="image/x-icon">
 
 </head>
@@ -173,10 +436,13 @@
                 <!-- Main Video Player with Lazy Loading Facade -->
                 <div class="main-video-player">
                     <div id="youtube-facade" class="youtube-facade" data-video-id="MuEC7iZoh0A">
-                        <img src="https://i.ytimg.com/vi/MuEC7iZoh0A/maxresdefault.jpg" alt="The TGG Story" loading="lazy">
+                        <img src="https://i.ytimg.com/vi/MuEC7iZoh0A/maxresdefault.jpg" alt="The TGG Story"
+                            loading="lazy">
                         <button class="play-button" aria-label="Play video">
                             <svg width="68" height="48" viewBox="0 0 68 48">
-                                <path d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#f00"></path>
+                                <path
+                                    d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z"
+                                    fill="#f00"></path>
                                 <path d="M 45,24 27,14 27,34" fill="#fff"></path>
                             </svg>
                         </button>
@@ -191,31 +457,36 @@
                     <div class="thumbnail-scroll-container">
                         <div class="playlist-item active" data-video-id="MuEC7iZoh0A" data-title="The TGG Story">
                             <div class="thumbnail-wrapper">
-                                <img src="https://i.ytimg.com/vi/MuEC7iZoh0A/hqdefault.jpg" alt="Video Thumbnail" loading="lazy">
+                                <img src="https://i.ytimg.com/vi/MuEC7iZoh0A/hqdefault.jpg" alt="Video Thumbnail"
+                                    loading="lazy">
                             </div>
                             <span class="video-title">The TGG Story</span>
                         </div>
                         <div class="playlist-item" data-video-id="ezXdKNMYod4" data-title="Client Success">
                             <div class="thumbnail-wrapper">
-                                <img src="https://i.ytimg.com/vi/ezXdKNMYod4/hqdefault.jpg" alt="Video Thumbnail" loading="lazy">
+                                <img src="https://i.ytimg.com/vi/ezXdKNMYod4/hqdefault.jpg" alt="Video Thumbnail"
+                                    loading="lazy">
                             </div>
                             <span class="video-title">Client Success</span>
                         </div>
                         <div class="playlist-item" data-video-id="fs9_K0wbGUs" data-title="Training Philosophy">
                             <div class="thumbnail-wrapper">
-                                <img src="https://i.ytimg.com/vi/fs9_K0wbGUs/hqdefault.jpg" alt="Video Thumbnail" loading="lazy">
+                                <img src="https://i.ytimg.com/vi/fs9_K0wbGUs/hqdefault.jpg" alt="Video Thumbnail"
+                                    loading="lazy">
                             </div>
                             <span class="video-title">Training Philosophy</span>
                         </div>
                         <div class="playlist-item" data-video-id="lMRlJagRQfM" data-title="A Day in the Life">
                             <div class="thumbnail-wrapper">
-                                <img src="https://i.ytimg.com/vi/lMRlJagRQfM/hqdefault.jpg" alt="Video Thumbnail" loading="lazy">
+                                <img src="https://i.ytimg.com/vi/lMRlJagRQfM/hqdefault.jpg" alt="Video Thumbnail"
+                                    loading="lazy">
                             </div>
                             <span class="video-title">A Day in the Life</span>
                         </div>
                         <div class="playlist-item" data-video-id="EvH8zlnTC1M" data-title="Nutrition Tips">
                             <div class="thumbnail-wrapper">
-                                <img src="https://i.ytimg.com/vi/EvH8zlnTC1M/hqdefault.jpg" alt="Video Thumbnail" loading="lazy">
+                                <img src="https://i.ytimg.com/vi/EvH8zlnTC1M/hqdefault.jpg" alt="Video Thumbnail"
+                                    loading="lazy">
                             </div>
                             <span class="video-title">Nutrition Tips</span>
                         </div>
@@ -229,16 +500,18 @@
             <div class="container">
                 <p class="section-tag-light-bg">Credentials</p>
                 <h2>My Certifications</h2>
-                <p class="subtitle subtitle-dark">A commitment to excellence, backed by accredited, industry-leading qualifications.</p>
-                
+                <p class="subtitle subtitle-dark">A commitment to excellence, backed by accredited, industry-leading
+                    qualifications.</p>
+
                 <div class="certifications-grid">
-                    
+
                     <!-- Certificate 1: ISSA -->
                     <div class="cert-item">
                         <div class="cert-content">
                             <span class="cert-script-title">Certified Professional</span>
                             <h4 class="cert-main-title">Personal Trainer & Nutritionist</h4>
-                            <p class="cert-awarder">Awarded by<br><strong>ISSA (International Sports Sciences Association)</strong></p>
+                            <p class="cert-awarder">Awarded by<br><strong>ISSA (International Sports Sciences
+                                    Association)</strong></p>
                         </div>
                     </div>
 
@@ -247,7 +520,8 @@
                         <div class="cert-content">
                             <span class="cert-script-title">Certified Specialist</span>
                             <h4 class="cert-main-title">Sports Medicine & Performance</h4>
-                            <p class="cert-awarder">Awarded by<br><strong>NASM (National Academy of Sports Medicine)</strong></p>
+                            <p class="cert-awarder">Awarded by<br><strong>NASM (National Academy of Sports
+                                    Medicine)</strong></p>
                         </div>
                     </div>
 
@@ -256,7 +530,8 @@
                         <div class="cert-content">
                             <span class="cert-script-title">Federation Accredited</span>
                             <h3 class="cert-main-title">National Bodybuilding Coach</h4>
-                            <p class="cert-awarder">Awarded by<br><strong>Fédération Royale Marocaine de Bodybuilding</strong></p>
+                                <p class="cert-awarder">Awarded by<br><strong>Fédération Royale Marocaine de
+                                        Bodybuilding</strong></p>
                         </div>
                     </div>
 
@@ -352,12 +627,13 @@
             position: relative;
             width: 100%;
             height: 0;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            padding-bottom: 56.25%;
+            /* 16:9 aspect ratio */
             background: #000;
             cursor: pointer;
             overflow: hidden;
         }
-        
+
         .youtube-facade img {
             position: absolute;
             top: 0;
@@ -366,7 +642,7 @@
             height: 100%;
             object-fit: cover;
         }
-        
+
         .play-button {
             position: absolute;
             top: 50%;
@@ -377,11 +653,11 @@
             cursor: pointer;
             transition: transform 0.2s ease;
         }
-        
+
         .play-button:hover {
             transform: translate(-50%, -50%) scale(1.1);
         }
-        
+
         #youtube-player-container iframe {
             position: absolute;
             top: 0;
@@ -392,20 +668,20 @@
     </style>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Mobile navigation toggle
             const navToggle = document.querySelector('.mobile-nav-toggle');
             const mobileNav = document.querySelector('.mobile-nav');
             const body = document.querySelector('body');
 
             if (navToggle) {
-                navToggle.addEventListener('click', function() {
+                navToggle.addEventListener('click', function () {
                     navToggle.classList.toggle('active');
                     mobileNav.classList.toggle('open');
                     body.classList.toggle('mobile-nav-open');
                 });
             }
-            
+
             const mobileLinks = document.querySelectorAll('.mobile-nav a');
             mobileLinks.forEach(link => {
                 link.addEventListener('click', () => {
@@ -428,10 +704,10 @@
                     iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
                     iframe.allowFullscreen = true;
                     iframe.style.cssText = 'position: absolute; top: 0; left: 0; width: 100%; height: 100%;';
-                    
+
                     playerContainer.appendChild(iframe);
                     playerContainer.style.cssText = 'position: relative; width: 100%; height: 0; padding-bottom: 56.25%;';
-                    
+
                     youtubeFacade.style.display = 'none';
                     playerContainer.style.display = 'block';
                     isPlayerLoaded = true;
@@ -440,7 +716,7 @@
 
             // Handle facade click
             if (youtubeFacade) {
-                youtubeFacade.addEventListener('click', function() {
+                youtubeFacade.addEventListener('click', function () {
                     const videoId = this.dataset.videoId;
                     loadYouTubePlayer(videoId);
                 });
@@ -448,12 +724,12 @@
 
             // Interactive Video Playlist
             const playlistItems = document.querySelectorAll('.playlist-item');
-            
+
             playlistItems.forEach(item => {
-                item.addEventListener('click', function() {
+                item.addEventListener('click', function () {
                     const videoId = this.dataset.videoId;
                     const title = this.dataset.title;
-                    
+
                     if (isPlayerLoaded) {
                         // Update existing iframe
                         const iframe = playerContainer.querySelector('iframe');
@@ -470,7 +746,7 @@
                         youtubeFacade.dataset.videoId = videoId;
                         loadYouTubePlayer(videoId);
                     }
-                    
+
                     // Update active state
                     document.querySelector('.playlist-item.active')?.classList.remove('active');
                     this.classList.add('active');
