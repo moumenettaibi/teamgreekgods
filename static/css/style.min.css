@@ -67,6 +67,7 @@
     transition: background-color 0.3s, color 0.3s;
     color: var(--text-secondary-dark);
     font-size: 0.9rem;
+    white-space: nowrap; /* Prevents text wrapping on buttons */
 }
 
 .toggle-btn.active {
@@ -180,6 +181,10 @@
     font-weight: 700;
     color: var(--text-dark);
     margin-top: 4px;
+}
+
+#result-date br {
+    display: block; /* Ensures line break on desktop */
 }
 
 .result-feedback {
@@ -313,40 +318,40 @@
     .calculator-section {
         padding: 60px 0;
     }
+
     .calculator-header {
         margin-bottom: 40px;
     }
+
     .calculator-header h1 {
         font-size: 2.25rem;
     }
+
     .calculator-wrapper {
-        padding: 30px 24px;
+        padding: 30px 20px;
     }
+
     .calculator-form .form-row.input-row {
         flex-direction: column;
-        gap: 20px;
+        gap: 24px;
     }
-    .toggle-group {
-        width: 100%;
-    }
-    .toggle-buttons {
-        width: 100%;
-        justify-content: center;
-    }
-    .toggle-btn {
-        flex: 1;
-        text-align: center;
-    }
+
     .result-container {
         padding: 24px;
-        gap: 16px;
+        gap: 20px;
     }
+    
     .result-icon {
         width: 60px;
         height: 60px;
     }
+
     #result-date {
-        font-size: 1.25rem;
+        font-size: 1.35rem;
+    }
+
+    .result-cta p {
+        font-size: 0.9rem;
     }
 }
 
@@ -354,18 +359,51 @@
     .calculator-header h1 {
         font-size: 2rem;
     }
-    .calculator-form .toggle-row {
-        gap: 20px;
+
+    .calculator-wrapper {
+        padding: 24px 16px;
     }
+
+    .calculator-form .toggle-row {
+        gap: 24px;
+    }
+    
+    .toggle-group {
+        width: 100%;
+    }
+
     .toggle-buttons {
         flex-direction: column;
         border-radius: 12px;
         padding: 4px;
-    }
-    .toggle-btn {
         width: 100%;
     }
+    
+    .toggle-btn {
+        padding: 12px; /* Uniform padding for stacked buttons */
+    }
+
+    .result-container {
+        padding: 20px;
+    }
+
     #result-date br {
-        display: none; /* Stack the date on one line again on very small screens */
+        display: none; /* Stack date on one line for more vertical space */
+    }
+
+    #result-date {
+        font-size: 1.2rem;
+    }
+
+    #result-text {
+        font-size: 1rem;
+    }
+
+    .modal-content {
+        padding: 16px;
+    }
+
+    .modal-actions {
+        flex-direction: column; /* Stack modal buttons on very small screens */
     }
 }
